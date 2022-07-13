@@ -1,4 +1,4 @@
-package com.fhdone.java2022.demo;
+package com.fhdone.java2022;
 
 import org.junit.runner.RunWith;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;

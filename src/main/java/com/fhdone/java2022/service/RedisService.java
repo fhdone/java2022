@@ -1,4 +1,4 @@
-package com.fhdone.java2022.demo.service;
+package com.fhdone.java2022.service;
 
 public interface RedisService {
 

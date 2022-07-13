@@ -1,4 +1,4 @@
-package com.fhdone.java2022.demo.config;
+package com.fhdone.java2022.config;
 
 import org.springframework.context.annotation.Bean;
 

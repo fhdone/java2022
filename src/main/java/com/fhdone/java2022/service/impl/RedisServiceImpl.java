@@ -1,7 +1,7 @@
-package com.fhdone.java2022.demo.service.impl;
+package com.fhdone.java2022.service.impl;
 
 
-import com.fhdone.java2022.demo.service.RedisService;
+import com.fhdone.java2022.service.RedisService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Service;

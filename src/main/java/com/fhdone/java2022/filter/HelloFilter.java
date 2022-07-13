@@ -1,5 +1,6 @@
-package com.fhdone.java2022.demo.filter;
+package com.fhdone.java2022.filter;
 
+import lombok.extern.slf4j.Slf4j;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.context.annotation.Configuration;
@@ -13,13 +14,12 @@ import java.io.IOException;
 
 @Configuration
 @Order(Ordered.HIGHEST_PRECEDENCE)
-public class CustomFilter implements Filter {
-
-    private static final Logger logger = LoggerFactory.getLogger(CustomFilter.class);
+@Slf4j
+public class HelloFilter implements Filter {
 
     @Override
     public void init(FilterConfig filterConfig) throws ServletException {
-        logger.info("########## Initiating Custom filter ##########");
+        log.info("########## Initiating Custom filter ##########");
     }
 
     @Override
@@ -29,12 +29,12 @@ public class CustomFilter implements Filter {
         HttpServletRequest request = (HttpServletRequest) servletRequest;
         HttpServletResponse response = (HttpServletResponse) servletResponse;
 
-        logger.info("Logging Request  {} : {}", request.getMethod(), request.getRequestURI());
+        log.info("Logging Request  {} : {}", request.getMethod(), request.getRequestURI());
 
         //call next filter in the filter chain
         filterChain.doFilter(request, response);
 
-        logger.info("Logging Response :{}", response.getContentType());
+        log.info("Logging Response :{}", response.getContentType());
     }
 
     @Override

@@ -1,4 +1,4 @@
-package com.fhdone.java2022.demo.controller;
+package com.fhdone.java2022.controller;
 
 
 import org.junit.jupiter.api.Test;
