@@ -9,3 +9,21 @@ spring:
         charset: UTF-8
         enabled: true
         force: true
+        
+    # MYSQL data source configuration. No need to explain too much.
+  datasource:
+    type: com.zaxxer.hikari.HikariDataSource
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://127.0.0.1:3306/demo?useUnicode=true&characterEncoding=UTF-8&serverTimezone=Asia/Shanghai&allowMultiQueries=true
+    username: root
+    password: 2222
+    hikari:
+      register-mbeans: true
+
+  mybatis:
+    # Set the xml configuration file address for mybatis.
+    # config-location: "classpath:mybatis/mybatis-config.xml"
+
+    # Loads all files in the 'mapper' directory (regardless of directory hierarchy) with names ending in '-mapper.xml'.
+    mapper-locations:
+      - "classpath:mapper/**/*-mapper.xml"       
