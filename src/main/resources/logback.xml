@@ -8,7 +8,6 @@
 	<property name="LOG_SYS_HOME" value="${LOG_HOME}/sys" />
 	<property name="LOG_CONTROLLER_HOME" value="${LOG_HOME}/controller" />
 	
-	
 	<appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
 		<layout class="ch.qos.logback.classic.PatternLayout">
 			<Pattern>%d{HH:mm:ss.SSS} %X{USER_ID} [%thread] %-5level %logger{50} - %msg%n</Pattern>
@@ -67,10 +66,6 @@
 <!-- 		<appender-ref ref="STDOUT" /> -->
 <!-- 	</logger> -->
 
-	<logger name="druid.sql" level="INFO" additivity="false">
-		<appender-ref ref="STDOUT" />
-	</logger>
-
 <!--      <logger name="org.springframework.jdbc" level="info"  additivity="false"> -->
 <!--         <appender-ref ref="STDOUT" /> -->
 <!--     </logger> -->
@@ -84,8 +79,8 @@
 	</logger>
 
 
-	<root level="DEBUG">
-		<appender-ref ref="APP" />
+	<root level="INFO">
+<!--		<appender-ref ref="APP" />-->
 		<appender-ref ref="STDOUT" />
 	</root>
 

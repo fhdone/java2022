@@ -8,7 +8,6 @@ import org.springframework.scheduling.annotation.EnableScheduling;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 
-import javax.annotation.Resource;
 import javax.management.JMX;
 import javax.management.MBeanServer;
 import javax.management.ObjectName;
@@ -17,7 +16,7 @@ import java.lang.management.ManagementFactory;
 /**
  * 连接池监控
  */
-@Component
+//@Component
 @EnableScheduling
 @Slf4j
 public class DataSourceMonitor {
