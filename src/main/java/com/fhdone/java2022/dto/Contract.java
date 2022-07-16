@@ -7,10 +7,10 @@ import org.apache.ibatis.type.Alias;
 @Alias("Contract")
 public class Contract {
     
-    Long ID;
-    String EMAIL;
-    String FIRSTNAME;
-    String LASTNAME;
-    String TELEPHONE;
+    Long id;
+    String email;
+    String firstname;
+    String lastname;
+    String telephone;
 
 }

@@ -37,5 +37,11 @@ public class ContactMapperTest extends BaseTest {
         Contract contract = new Contract();
         log.info("queryContact result:" + JSON.toJSONString(contactMapper.selectContract(contract)));
     }
+
+    @Test
+    public void insertContract() throws Exception {
+        Contract contract = new Contract();
+        log.info("insertContract result:" + contactMapper.insertContract(contract));
+    }
     
 }

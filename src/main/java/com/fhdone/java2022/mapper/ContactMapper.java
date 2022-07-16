@@ -1,6 +1,7 @@
 package com.fhdone.java2022.mapper;
 
 import com.fhdone.java2022.dto.Contract;
+import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
 
@@ -20,6 +21,11 @@ public interface ContactMapper {
         "</script>"})
     List<Contract> queryContactByCondition( Map<String, Object>  paraMap);
 
+    @Insert("INSERT INTO demo.CONTACTS (EMAIL, FIRSTNAME, LASTNAME, TELEPHONE)" +
+        " VALUES( #{email} , #{firstname} , #{lastname}, #{telephone} ) " )
+    long insertContract(Contract contract);
+
+    
     List<Contract> selectContract(Contract contract);
 
     
