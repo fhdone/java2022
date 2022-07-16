@@ -22,13 +22,10 @@ spring:
       pool-name: java2022-dev
       register-mbeans: true
 
-  mybatis:
-    # Set the xml configuration file address for mybatis.
-    # config-location: "classpath:mybatis/mybatis-config.xml"
+mybatis:
+  # Set the xml configuration file address for mybatis.
+  config-location: "classpath:mybatis-config.xml"
 
-    # Loads all files in the 'mapper' directory (regardless of directory hierarchy) with names ending in '-mapper.xml'.
-    type-aliases-package: com.fhdone.java2022.dto
-    mapper-locations: classpath:mapper/*.xml
-    configuration:
-      # 开启数据表字段自动下划线转驼峰
-      map-underscore-to-camel-case: true
+  # Loads all files in the 'mapper' directory (regardless of directory hierarchy) with names ending in '-mapper.xml'.
+  type-aliases-package: com.fhdone.java2022.dto
+  mapper-locations: classpath:mapper/*.xml
