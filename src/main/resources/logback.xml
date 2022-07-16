@@ -62,16 +62,7 @@
 	<logger name="java.sql.PreparedStatement" level="DEBUG" additivity="false">
 		<appender-ref ref="STDOUT" />
 	</logger>
-<!-- 	<logger name="java.sql.ResultSet" level="info" additivity="false"> -->
-<!-- 		<appender-ref ref="STDOUT" /> -->
-<!-- 	</logger> -->
 
-<!--      <logger name="org.springframework.jdbc" level="info"  additivity="false"> -->
-<!--         <appender-ref ref="STDOUT" /> -->
-<!--     </logger> -->
-<!--     <logger name="org.springframework.jdbc.core" level="info" additivity="false"> -->
-<!--         <appender-ref ref="STDOUT" /> -->
-<!--     </logger> -->
 
 	<logger name="com.fhdone.java2022.service" level="INFO" additivity="false">
 		<appender-ref ref="APP" />
@@ -79,7 +70,7 @@
 	</logger>
 
 
-	<root level="INFO">
+	<root level="DEBUG">
 <!--		<appender-ref ref="APP" />-->
 		<appender-ref ref="STDOUT" />
 	</root>

@@ -3,6 +3,7 @@ package com.fhdone.java2022.service.impl;
 import com.fhdone.java2022.dto.Contract;
 import com.fhdone.java2022.mapper.ContactMapper;
 import com.fhdone.java2022.service.ContactService;
+import com.github.pagehelper.PageHelper;
 import org.apache.ibatis.session.ExecutorType;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
@@ -26,6 +27,12 @@ public class ContactServiceImpl implements ContactService {
         return contactMapper.queryContact();
     }
 
+    @Override
+    public List<Contract> queryContact(int pageNum, int pageSize){
+        PageHelper.startPage(pageNum, pageSize);
+        return contactMapper.queryContact();
+    }
+    
     @Override
     @Transactional 
     public Long insertContact(Contract contract) {

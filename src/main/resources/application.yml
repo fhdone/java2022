@@ -29,3 +29,9 @@ mybatis:
   # Loads all files in the 'mapper' directory (regardless of directory hierarchy) with names ending in '-mapper.xml'.
   type-aliases-package: com.fhdone.java2022.dto
   mapper-locations: classpath:mapper/*.xml
+  
+pagehelper:
+  helperDialect: mysql
+  reasonable: true
+  supportMethodsArguments: true
+  params: count=countSql  

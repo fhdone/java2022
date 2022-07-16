@@ -4,6 +4,7 @@ import com.alibaba.fastjson.JSON;
 import com.fhdone.java2022.BaseTest;
 import com.fhdone.java2022.dto.Contract;
 import com.fhdone.java2022.service.ContactService;
+import com.github.pagehelper.PageInfo;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,7 +25,18 @@ public class ContactServiceImplTest extends BaseTest {
     }
     
     @Test
-    @Rollback(false)
+    public void queryContactPage() {
+        for(int i=0; i<10; i++){
+            List<Contract> list = contactService.queryContact(i ,2);
+            PageInfo<Contract> pageInfo = new PageInfo<Contract>(list,10);
+            log.info("queryContact result, page num: {}, page info: {}", i ,
+                JSON.toJSONString(pageInfo));
+        }
+    }
+    
+    
+    @Test
+    @Rollback(true)
     public void insertContact(){
         Contract contract = new Contract();
         contract.setEmail("email");
