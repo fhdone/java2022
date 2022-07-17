@@ -21,6 +21,11 @@ spring:
       maximum-pool-size: 2
       pool-name: java2022-dev
       register-mbeans: true
+  
+#  security:
+#    user:
+#      name: admin
+#      password: admin
 
 mybatis:
   # Set the xml configuration file address for mybatis.
@@ -34,4 +39,6 @@ pagehelper:
   helperDialect: mysql
   reasonable: true
   supportMethodsArguments: true
-  params: count=countSql  
+  params: count=countSql
+    
+    
