@@ -4,22 +4,21 @@ import com.fhdone.java2022.dto.Contract;
 import com.fhdone.java2022.mapper.ContactMapper;
 import com.fhdone.java2022.service.ContactService;
 import com.github.pagehelper.PageHelper;
+import lombok.AllArgsConstructor;
 import org.apache.ibatis.session.ExecutorType;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
 @Service
+@AllArgsConstructor
 public class ContactServiceImpl implements ContactService {
 
-    @Autowired
     protected SqlSessionFactory sqlSessionFactory;
     
-    @Autowired
     private ContactMapper contactMapper;
 
     @Override

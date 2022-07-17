@@ -2,18 +2,17 @@ package com.fhdone.java2022.service.impl;
 
 
 import com.fhdone.java2022.service.RedisService;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.AllArgsConstructor;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Service;
 
 import java.util.concurrent.TimeUnit;
 
 @Service
+@AllArgsConstructor
 public class RedisServiceImpl implements RedisService {
 
-    @Autowired
     private RedisTemplate redisTemplate;
-
 
     @Override
     public void redisDemo() throws Exception {

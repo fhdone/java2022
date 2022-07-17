@@ -3,11 +3,11 @@ package com.fhdone.java2022.aspect;
 import com.zaxxer.hikari.HikariDataSource;
 import com.zaxxer.hikari.HikariPoolMXBean;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.EnableScheduling;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 
+import javax.annotation.Resource;
 import javax.management.JMX;
 import javax.management.MBeanServer;
 import javax.management.ObjectName;
@@ -16,14 +16,14 @@ import java.lang.management.ManagementFactory;
 /**
  * 连接池监控
  */
-//@Component
+@Component
 @EnableScheduling
 @Slf4j
 public class DataSourceMonitor {
 
     private HikariPoolMXBean proxy;
 
-    @Autowired
+    @Resource
     private HikariDataSource hikariDataSource;
 
     
