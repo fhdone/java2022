@@ -26,6 +26,9 @@ spring:
 #    user:
 #      name: admin
 #      password: admin
+  redis:
+    redisson:
+      file: classpath:redisson.yml
 
 mybatis:
   # Set the xml configuration file address for mybatis.
