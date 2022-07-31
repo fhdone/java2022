@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+
+	<property name="LOG_HOME" value="/Users/fhdone/log/java2022/eureka/logs" />
+	<property name="LOG_MAX_HISTORY" value="30" />
+	<property name="LOG_APP_HOME" value="${LOG_HOME}/app" />
+	<property name="LOG_SYS_HOME" value="${LOG_HOME}/sys" />
+	<property name="LOG_CONTROLLER_HOME" value="${LOG_HOME}/controller" />
+	
+	<appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+		<encoder>
+			<Pattern>%d{HH:mm:ss.SSS} %X{USER_ID} [%thread] %-5level %logger{50} - %msg%n</Pattern>
+		</encoder>
+	</appender>
+
+	<root level="INFO">
+<!--		<appender-ref ref="APP" />-->
+		<appender-ref ref="STDOUT" />
+	</root>
+
+
+</configuration>
