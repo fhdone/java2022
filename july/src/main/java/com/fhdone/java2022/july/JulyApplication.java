@@ -1,20 +1,17 @@
 package com.fhdone.java2022.july;
 
 
-import com.fhdone.java2022.july.cloud.ServiceRegistryApplication;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.context.annotation.ComponentScan;
-import org.springframework.context.annotation.FilterType;
 
 @SpringBootApplication
-@ComponentScan(excludeFilters  = {@ComponentScan.Filter(
-    type = FilterType.ASSIGNABLE_TYPE, classes = {ServiceRegistryApplication.class})})
+//@ComponentScan(excludeFilters  = {@ComponentScan.Filter(
+//    type = FilterType.ASSIGNABLE_TYPE, classes = {ServiceRegistryApplication.class})})
 //@MapperScan(basePackages = {"com.fhdone.java2022.july.mapper"}, annotationClass = Mapper.class)
-public class Application {
+public class JulyApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(Application.class, args);
+        SpringApplication.run(JulyApplication.class, args);
     }
 
 //    @Bean

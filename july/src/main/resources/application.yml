@@ -1,4 +1,7 @@
 spring:
+  application:
+    name: july-eureka-service
+    
   main:
     web-application-type: servlet
     
@@ -44,16 +47,23 @@ pagehelper:
   supportMethodsArguments: true
   params: count=countSql
     
-    
-    
 eureka:
   instance:
-    hostname: localhost
+    leaseRenewalIntervalInSeconds: 10
+    health-check-url-path: /actuator/health
+    metadata-map:
+      startup: ${random.int}
   client:
-    registerWithEureka: false
-    fetchRegistry: false
+    registryFetchIntervalSeconds: 5
     serviceUrl:
-      defaultZone: http://${eureka.instance.hostname}:9999/eureka/
-  server:
-    enable-self-preservation: false
-    
+      defaultZone: http://localhost:9999/eureka/
+#    fetch-registry: true
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+  endpoint:
+    health:
+      show-details: ALWAYS      
