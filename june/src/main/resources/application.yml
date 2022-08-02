@@ -2,6 +2,9 @@ spring:
   application:
     name: june-client
 
+  main:
+    web-application-type: none
+    
 eureka:
   client:
     serviceUrl:

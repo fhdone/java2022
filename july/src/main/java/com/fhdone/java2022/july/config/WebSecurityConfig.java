@@ -57,7 +57,7 @@ public class WebSecurityConfig {  //  extends WebSecurityConfigurerAdapter {
     @Bean
     public WebSecurityCustomizer webSecurityCustomizer( ){
         return web -> web.ignoring()
-            //.antMatchers("/**/**")
+            .antMatchers("/**/**")
             .antMatchers("/**/js/**")
             .antMatchers("/**/css/**");
 

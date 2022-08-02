@@ -1,18 +1,20 @@
 package com.fhdone.java2022.june;
 
+import com.fhdone.java2022.june.dto.Contract;
 import org.springframework.cloud.openfeign.FeignClient;
-import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.GetMapping;
 
+import java.util.List;
+
 @Service
-//@Component
-@FeignClient("JULY-EUREKA-SERVICE")
+@FeignClient("july-eureka-service")
 public interface JuneClient {
 
   @GetMapping("/test")
   public String july();
 
-
+  @GetMapping("/contract/queryContact")
+  public List<Contract> queryContact();
 
 }

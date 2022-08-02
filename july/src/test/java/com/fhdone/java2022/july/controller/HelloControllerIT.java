@@ -1,6 +1,7 @@
 package com.fhdone.java2022.july.controller;
 
 
+import com.fhdone.java2022.july.BaseTest;
 import org.junit.jupiter.api.Test;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,8 +11,7 @@ import org.springframework.http.ResponseEntity;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
-public class HelloControllerIT {
+public class HelloControllerIT extends BaseTest {
 
     @Autowired
     private TestRestTemplate template;
