@@ -1,4 +1,4 @@
-package com.fhdone.java2022.july.config;
+package com.fhdone.java2022.july.config.animal;
 
 import org.springframework.context.annotation.Bean;
 
