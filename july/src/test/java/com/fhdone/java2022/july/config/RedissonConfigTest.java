@@ -1,6 +1,7 @@
 package com.fhdone.java2022.july.config;
 
 import com.fhdone.java2022.july.BaseTest;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.redisson.api.RLock;
 import org.redisson.api.RMap;
@@ -31,6 +32,7 @@ public class RedissonConfigTest extends BaseTest {
     }
 
     @Test
+    @Ignore
     public void testRLock() throws Exception {
         RLock lock = redissonClient.getLock("rlock");    // 拿锁失败时会不停的重试
         // 具有Watch Dog 自动延期机制 默认续30s 每隔30/3=10 秒续到30s

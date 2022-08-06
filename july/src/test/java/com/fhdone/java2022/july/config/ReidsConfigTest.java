@@ -1,5 +1,6 @@
 package com.fhdone.java2022.july.config;
 
+import com.fhdone.java2022.july.BaseTest;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -8,7 +9,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.data.redis.core.RedisTemplate;
 
 @SpringBootTest
-public class ReidsConfigTest {
+public class ReidsConfigTest extends BaseTest {
 
     @Autowired
     private RedisTemplate<String, String> redisTemplate;

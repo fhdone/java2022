@@ -21,8 +21,10 @@ public class JuneClientTest extends BaseTest{
 
     @Test
     public void queryContact(){
-        List<Contract> list = juneClient.queryContact();
-        log.info(JSON.toJSONString(list));
+        for(int i=0; i<100; i++) {
+            List<Contract> list = juneClient.queryContact();
+            log.info(JSON.toJSONString(list));
+        }
     }
     
 }
