@@ -4,6 +4,8 @@ package com.fhdone.java2022.july;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
+import java.util.Collections;
+
 @SpringBootApplication
 //@ComponentScan(excludeFilters  = {@ComponentScan.Filter(
 //    type = FilterType.ASSIGNABLE_TYPE, classes = {ServiceRegistryApplication.class})})
@@ -11,7 +13,10 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class JulyApplication2 {
 
     public static void main(String[] args) {
-        SpringApplication.run(JulyApplication2.class, args);
+        //        SpringApplication.run(JulyApplication.class, args);
+        SpringApplication app = new SpringApplication(JulyApplication.class);
+        app.setDefaultProperties(Collections.singletonMap("server.port", "8081"));
+        app.run(args);
     }
 
 //    @Bean
