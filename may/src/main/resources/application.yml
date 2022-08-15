@@ -1,0 +1,24 @@
+spring:
+  application:
+    name: may-client
+
+  cloud:
+    gateway:
+      discovery:
+        locator:
+          # 是否从注册中心读取服务
+          enabled: true
+      routes:
+          # 服务的ID，唯一即可一般与微服务的service name一致
+        - id: july-eureka-service
+          # lb表示负载均衡
+          uri: lb://july-eureka-service
+          predicates:
+            # 路径匹配,所有contract的请求都转发到july-eureka-service
+            - Path=/contract/**
+              
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:9999/eureka/
+#    fetch-registry: true
