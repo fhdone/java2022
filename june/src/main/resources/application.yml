@@ -3,7 +3,7 @@ spring:
     name: june-client
 
   main:
-    web-application-type: none
+    web-application-type: servlet
     
 eureka:
   client:

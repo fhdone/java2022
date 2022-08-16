@@ -1,6 +1,6 @@
 package com.fhdone.java2022.july.service.impl;
 
-import com.fhdone.java2022.july.dto.Contract;
+import com.fhdone.java2022.april.dto.Contract;
 import com.fhdone.java2022.july.mapper.ContactMapper;
 import com.fhdone.java2022.july.service.ContactService;
 import com.github.pagehelper.PageHelper;

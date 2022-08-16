@@ -1,7 +1,7 @@
 package com.fhdone.java2022.june;
 
+import com.fhdone.java2022.april.dto.Contract;
 import com.fhdone.java2022.june.config.LoadBalancerConfig;
-import com.fhdone.java2022.june.dto.Contract;
 import org.springframework.cloud.loadbalancer.annotation.LoadBalancerClient;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.stereotype.Service;

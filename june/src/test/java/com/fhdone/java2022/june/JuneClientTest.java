@@ -1,7 +1,7 @@
 package com.fhdone.java2022.june;
 
 import com.alibaba.fastjson2.JSON;
-import com.fhdone.java2022.june.dto.Contract;
+import com.fhdone.java2022.april.dto.Contract;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;

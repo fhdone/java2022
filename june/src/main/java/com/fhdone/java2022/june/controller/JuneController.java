@@ -1,8 +1,8 @@
 package com.fhdone.java2022.june.controller;
 
 import com.alibaba.fastjson2.JSON;
+import com.fhdone.java2022.april.dto.Contract;
 import com.fhdone.java2022.june.JuneClient;
-import com.fhdone.java2022.june.dto.Contract;
 import com.netflix.hystrix.contrib.javanica.annotation.DefaultProperties;
 import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
 import com.netflix.hystrix.contrib.javanica.annotation.HystrixProperty;
@@ -27,14 +27,14 @@ public class JuneController {
 
     @GetMapping("/july")
     //@HystrixCommand
-    @HystrixCommand(commandProperties = {@HystrixProperty(name="execution.isolation.thread.timeoutInMilliseconds",value="500")})
+    @HystrixCommand(commandProperties = {@HystrixProperty(name="execution.isolation.thread.timeoutInMilliseconds",value="2000")})
     //@HystrixCommand(fallbackMethod="hstrixDefault")
     public String july(){
         return juneClient.july();
     }
 
     @GetMapping("/queryContact")
-    @HystrixCommand
+    //@HystrixCommand
     public List<Contract> queryContact(){
         return  juneClient.queryContact();
     }

@@ -1,7 +1,7 @@
 package com.fhdone.java2022.july.controller;
 
 
-import com.fhdone.java2022.july.dto.Contract;
+import com.fhdone.java2022.april.dto.Contract;
 import com.fhdone.java2022.july.mapper.ContactMapper;
 import com.fhdone.java2022.july.service.RedisService;
 import com.fhdone.java2022.july.service.ContactService;

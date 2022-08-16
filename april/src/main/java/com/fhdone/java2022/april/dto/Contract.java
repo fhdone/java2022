@@ -1,8 +1,10 @@
-package com.fhdone.java2022.june.dto;
+package com.fhdone.java2022.april.dto;
 
 import lombok.Data;
+//import org.apache.ibatis.type.Alias;
 
 @Data
+//@Alias("Contract")
 public class Contract {
     
     Long id;

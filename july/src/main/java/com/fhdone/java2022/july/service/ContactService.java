@@ -1,6 +1,7 @@
 package com.fhdone.java2022.july.service;
 
-import com.fhdone.java2022.july.dto.Contract;
+
+import com.fhdone.java2022.april.dto.Contract;
 
 import java.util.List;
 

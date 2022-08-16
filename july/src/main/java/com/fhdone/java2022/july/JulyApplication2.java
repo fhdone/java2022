@@ -6,7 +6,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 import java.util.Collections;
 
-@SpringBootApplication
+//@SpringBootApplication
 //@ComponentScan(excludeFilters  = {@ComponentScan.Filter(
 //    type = FilterType.ASSIGNABLE_TYPE, classes = {ServiceRegistryApplication.class})})
 //@MapperScan(basePackages = {"com.fhdone.java2022.july.mapper"}, annotationClass = Mapper.class)

@@ -8,11 +8,15 @@ import org.springframework.cloud.loadbalancer.annotation.LoadBalancerClient;
 import org.springframework.cloud.netflix.hystrix.EnableHystrix;
 import org.springframework.cloud.openfeign.EnableFeignClients;
 
+import java.util.Collections;
+
 @SpringBootApplication
 @EnableHystrix
 public class JuneClientApplication {
     public static void main(String[] args) {
-		SpringApplication.run(JuneClientApplication.class, args);
+		SpringApplication app = new SpringApplication(JuneClientApplication.class);
+        app.setDefaultProperties(Collections.singletonMap("server.port", "6001"));
+        app.run(args);
 	}
 
 }
