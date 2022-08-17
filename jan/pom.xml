@@ -3,10 +3,10 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>com.fhdone</groupId>
-	<artifactId>java2022-eureka</artifactId>
+	<artifactId>java2022-jan-eureka</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>jar</packaging>
-	<name>eureka</name>
+	<name>jan-eureka</name>
 
 	<parent>
 		<groupId>com.fhdone</groupId>

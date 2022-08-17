@@ -15,7 +15,7 @@ public class JulyApplication2 {
     public static void main(String[] args) {
         //        SpringApplication.run(JulyApplication.class, args);
         SpringApplication app = new SpringApplication(JulyApplication.class);
-        app.setDefaultProperties(Collections.singletonMap("server.port", "8081"));
+        app.setDefaultProperties(Collections.singletonMap("server.port", "7002"));
         app.run(args);
     }
 
