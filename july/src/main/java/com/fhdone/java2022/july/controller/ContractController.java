@@ -1,8 +1,8 @@
 package com.fhdone.java2022.july.controller;
 
 
-import com.fhdone.java2022.april.dto.Contract;
-import com.fhdone.java2022.july.mapper.ContactMapper;
+import com.fhdone.java2022.april.dto.demo.Contract;
+import com.fhdone.java2022.july.mapper.demo.ContactMapper;
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;

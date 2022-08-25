@@ -1,6 +1,6 @@
-package com.fhdone.java2022.july.mapper;
+package com.fhdone.java2022.july.mapper.demo;
 
-import com.fhdone.java2022.april.dto.Contract;
+import com.fhdone.java2022.april.dto.demo.Contract;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;

@@ -1,4 +1,4 @@
-package com.fhdone.java2022.april.dto;
+package com.fhdone.java2022.april.dto.demo;
 
 import lombok.Data;
 //import org.apache.ibatis.type.Alias;

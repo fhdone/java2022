@@ -1,23 +1,27 @@
 package com.fhdone.java2022.july.service.impl;
 
-import com.fhdone.java2022.april.dto.Contract;
-import com.fhdone.java2022.july.mapper.ContactMapper;
+import com.fhdone.java2022.april.dto.demo.Contract;
+import com.fhdone.java2022.july.mapper.demo.ContactMapper;
 import com.fhdone.java2022.july.service.ContactService;
 import com.github.pagehelper.PageHelper;
 import lombok.AllArgsConstructor;
 import org.apache.ibatis.session.ExecutorType;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import javax.annotation.Resource;
 import java.util.List;
 
 @Service
 @AllArgsConstructor
 public class ContactServiceImpl implements ContactService {
 
-    protected SqlSessionFactory sqlSessionFactory;
+    
+    @Resource(name="sqlSessionFactoryDbDemo")
+    private SqlSessionFactory sqlSessionFactoryDbDemo;
     
     private ContactMapper contactMapper;
 
@@ -43,7 +47,7 @@ public class ContactServiceImpl implements ContactService {
     @Transactional
     public Long insertContact(List<Contract> list) {
         Long count = 0L;
-        SqlSession sqlSession = sqlSessionFactory.openSession(ExecutorType.BATCH);
+        SqlSession sqlSession = sqlSessionFactoryDbDemo.openSession(ExecutorType.BATCH);
         try {
             for (Contract contract : list) {
                 contactMapper.insertContract(contract);

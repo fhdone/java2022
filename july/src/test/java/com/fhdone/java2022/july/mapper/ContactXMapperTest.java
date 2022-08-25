@@ -1,8 +1,9 @@
 package com.fhdone.java2022.july.mapper;
 
 import com.alibaba.fastjson.JSON;
-import com.fhdone.java2022.april.dto.Contract;
+import com.fhdone.java2022.april.dto.demo.Contract;
 import com.fhdone.java2022.july.BaseTest;
+import com.fhdone.java2022.july.mapper.demo.ContactMapper;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,7 +12,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 @Slf4j
-public class ContactMapperTest extends BaseTest {
+public class ContactXMapperTest extends BaseTest {
 
     @Autowired
     private ContactMapper contactMapper;

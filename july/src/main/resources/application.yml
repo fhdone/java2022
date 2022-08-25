@@ -18,16 +18,28 @@ spring:
         
     # MYSQL data source configuration. No need to explain too much.
   datasource:
-    type: com.zaxxer.hikari.HikariDataSource
-    driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://127.0.0.1:3306/demo?useUnicode=true&characterEncoding=UTF-8&serverTimezone=Asia/Shanghai&allowMultiQueries=true
-    username: root
-    password: 2222
-    hikari:
-      maximum-pool-size: 2
-      pool-name: java2022-dev
-      register-mbeans: true
-  
+    demo:
+      type: com.zaxxer.hikari.HikariDataSource
+      driver-class-name: com.mysql.cj.jdbc.Driver
+      jdbc-url: jdbc:mysql://127.0.0.1:3306/demo?useUnicode=true&characterEncoding=UTF-8&serverTimezone=Asia/Shanghai&allowMultiQueries=true
+      username: root
+      password: 2222
+      hikari:
+        maximum-pool-size: 2
+        pool-name: java2022-demo
+        register-mbeans: true
+    
+    test:
+      type: com.zaxxer.hikari.HikariDataSource
+      driver-class-name: com.mysql.cj.jdbc.Driver
+      jdbc-url: jdbc:mysql://127.0.0.1:3306/test?useUnicode=true&characterEncoding=UTF-8&serverTimezone=Asia/Shanghai&allowMultiQueries=true
+      username: root
+      password: 2222
+      hikari:
+        maximum-pool-size: 2
+        pool-name: java2022-test
+        register-mbeans: true
+      
 #  security:
 #    user:
 #      name: admin
@@ -41,8 +53,8 @@ mybatis:
   config-location: "classpath:mybatis-config.xml"
 
   # Loads all files in the 'mapper' directory (regardless of directory hierarchy) with names ending in '-mapper.xml'.
-  type-aliases-package: com.fhdone.java2022.april.dto
-  mapper-locations: classpath:mapper/*.xml
+  # type-aliases-package: com.fhdone.java2022.april.dto
+  # mapper-locations: classpath:mapper/**/*.xml
   
 pagehelper:
   helperDialect: mysql

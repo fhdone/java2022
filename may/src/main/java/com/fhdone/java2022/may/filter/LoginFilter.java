@@ -25,9 +25,9 @@ public class LoginFilter implements GlobalFilter, Ordered {
         //2.判断是否存在
         if(token == null) {
             //3.如果不存在 : 认证失败
-            log.info("没有登录");
-            exchange.getResponse().setStatusCode(HttpStatus.UNAUTHORIZED);
-            return exchange.getResponse().setComplete(); //请求结束
+            //log.info("没有登录");
+            //exchange.getResponse().setStatusCode(HttpStatus.UNAUTHORIZED);
+            //return exchange.getResponse().setComplete(); //请求结束
         }
         //4.如果存在,继续执行
         return chain.filter(exchange); //继续向下执行
