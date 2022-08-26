@@ -2,6 +2,7 @@ package com.fhdone.java2022.july.config;
 
 import com.fhdone.java2022.july.BaseTest;
 import org.junit.After;
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,6 +29,7 @@ public class ReidsConfigTest extends BaseTest {
         for(int i=0; i<10; i++) {
             redisTemplate.opsForValue().set("key"+i, System.currentTimeMillis()+"" );
         }
+        Assert.assertTrue(true);
     }
 
 

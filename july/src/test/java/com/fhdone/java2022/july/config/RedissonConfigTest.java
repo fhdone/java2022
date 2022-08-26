@@ -1,6 +1,7 @@
 package com.fhdone.java2022.july.config;
 
 import com.fhdone.java2022.july.BaseTest;
+import org.junit.Assert;
 import org.junit.Ignore;
 import org.junit.Test;
 import org.redisson.api.RLock;
@@ -19,7 +20,8 @@ public class RedissonConfigTest extends BaseTest {
     public void test1() {
         redissonClient.getBucket("hello").set("bug");
         String test = (String) redissonClient.getBucket("hello").get();
-        System.out.println(test);
+        //System.out.println(test);
+        Assert.assertEquals("bug",test);
     }
 
     @Test
@@ -29,6 +31,7 @@ public class RedissonConfigTest extends BaseTest {
             map.put("key"+i,"value"+i);
             map.expire(3, TimeUnit.MINUTES);
         }
+        Assert.assertTrue(true);
     }
 
     @Test

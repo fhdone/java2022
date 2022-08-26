@@ -4,6 +4,7 @@ import com.fhdone.java2022.july.BaseTest;
 import com.fhdone.java2022.july.config.animal.AnimalConfig;
 import com.fhdone.java2022.july.config.animal.Cat;
 import com.fhdone.java2022.july.config.animal.Dog;
+import org.junit.Assert;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
