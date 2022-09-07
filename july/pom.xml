@@ -8,6 +8,11 @@
 	<packaging>jar</packaging>
 	<name>july-service</name>
 
+	<properties>
+		<baseDir>/Users/fhdone/Documents/code/workspace/java2022/july</baseDir>
+		<kettleVersion>9.3.0.0-428</kettleVersion>
+	</properties>
+	
 	<parent>
 		<groupId>com.fhdone</groupId>
 		<artifactId>java2022-april-common</artifactId>
@@ -61,6 +66,50 @@
 			<artifactId>mysql-connector-java</artifactId>
 			<version>8.0.29</version>
 		</dependency>
+		
+		
+		<dependency>
+			<groupId>com.ibm.db2</groupId>
+			<artifactId>db2jcc4</artifactId>
+			<version>3.71.22</version>
+		</dependency>
+		
+		<dependency>
+			<groupId>pentaho-kettle</groupId>
+			<artifactId>kettle-core</artifactId>
+			<version>${kettleVersion}</version>
+		</dependency>
+		<dependency>
+			<groupId>pentaho-kettle</groupId>
+			<artifactId>kettle-engine</artifactId>
+			<version>${kettleVersion}</version>
+		</dependency>
+		<dependency>
+			<groupId>pentaho</groupId>
+			<artifactId>metastore</artifactId>
+			<version>${kettleVersion}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.pentaho</groupId>
+			<artifactId>pentaho-encryption-support</artifactId>
+			<version>${kettleVersion}</version>
+		</dependency>
+		
     </dependencies>
 
+	
+	<repositories>
+		<repository>
+            <id>alimaven</id>
+            <name>alimaven</name>
+            <url>https://maven.aliyun.com/repository/central</url>
+        </repository>
+		
+		<repository>
+            <id>pentaho-public</id>
+            <name>Pentaho Public</name>
+            <url>https://repo.orl.eng.hitachivantara.com/artifactory/pnt-mvn/</url>
+        </repository>
+    </repositories>
+	
 </project>
