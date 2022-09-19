@@ -1,6 +1,6 @@
 package com.fhdone.java2022.july.mapper.test;
 
-import com.fhdone.java2022.april.dto.test.User;
+import com.fhdone.java2022.march.dto.test.User;
 import org.apache.ibatis.annotations.Mapper;
 
 import java.util.List;

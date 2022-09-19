@@ -12,13 +12,12 @@
 		<groupId>com.fhdone</groupId>
 		<artifactId>java2022-april-common</artifactId>
 		<version>0.0.1-SNAPSHOT</version>
-		<relativePath/>
 	</parent>
 	
 	<dependencies>
 		<dependency>
             <groupId>com.fhdone</groupId>
-            <artifactId>java2022-april-common</artifactId>
+            <artifactId>java2022-march-common</artifactId>
             <version>0.0.1-SNAPSHOT</version>
         </dependency>
 		<dependency>

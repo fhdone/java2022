@@ -1,7 +1,7 @@
 package com.fhdone.java2022.june;
 
 import com.alibaba.fastjson2.JSON;
-import com.fhdone.java2022.april.dto.demo.Contract;
+import com.fhdone.java2022.march.dto.demo.Contract;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.Assert;
 import org.junit.Test;

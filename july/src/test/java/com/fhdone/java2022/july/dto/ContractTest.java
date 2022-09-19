@@ -1,6 +1,6 @@
 package com.fhdone.java2022.july.dto;
 
-import com.fhdone.java2022.april.dto.demo.Contract;
+import com.fhdone.java2022.march.dto.demo.Contract;
 import org.junit.Assert;
 import org.junit.Test;
 

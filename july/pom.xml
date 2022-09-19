@@ -17,13 +17,12 @@
 		<groupId>com.fhdone</groupId>
 		<artifactId>java2022-april-common</artifactId>
 		<version>0.0.1-SNAPSHOT</version>
-		<relativePath/>
 	</parent>
 
 	<dependencies>
 		<dependency>
             <groupId>com.fhdone</groupId>
-            <artifactId>java2022-april-common</artifactId>
+            <artifactId>java2022-march-common</artifactId>
             <version>0.0.1-SNAPSHOT</version>
         </dependency>
 		<dependency>
@@ -67,12 +66,11 @@
 			<version>8.0.29</version>
 		</dependency>
 		
-		
-		<dependency>
-			<groupId>com.ibm.db2</groupId>
-			<artifactId>db2jcc4</artifactId>
-			<version>3.71.22</version>
-		</dependency>
+<!--		<dependency>-->
+<!--			<groupId>com.ibm.db2</groupId>-->
+<!--			<artifactId>db2jcc4</artifactId>-->
+<!--			<version>3.71.22</version>-->
+<!--		</dependency>-->
 		
 		<dependency>
 			<groupId>pentaho-kettle</groupId>

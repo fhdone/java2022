@@ -28,7 +28,7 @@ public class DbTestConfig {
         SqlSessionFactoryBean factoryBean = new SqlSessionFactoryBean();
         factoryBean.setDataSource(dataSourceDbTest);
         factoryBean.setMapperLocations(new PathMatchingResourcePatternResolver().getResources("classpath:mapper/test/*.xml"));
-//        factoryBean.setTypeAliasesPackage("com.fhdone.java2022.april.dto.test");
+//        factoryBean.setTypeAliasesPackage("com.fhdone.java2022.march.dto.test");
         return factoryBean.getObject();
     }
 

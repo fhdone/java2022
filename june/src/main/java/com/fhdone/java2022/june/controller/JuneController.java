@@ -1,6 +1,6 @@
 package com.fhdone.java2022.june.controller;
 
-import com.fhdone.java2022.april.dto.ResultInfo;
+import com.fhdone.java2022.march.dto.ResultInfo;
 import com.fhdone.java2022.june.JuneClient;
 import com.netflix.hystrix.contrib.javanica.annotation.DefaultProperties;
 import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;

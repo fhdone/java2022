@@ -53,7 +53,7 @@ mybatis:
   config-location: "classpath:mybatis-config.xml"
 
   # Loads all files in the 'mapper' directory (regardless of directory hierarchy) with names ending in '-mapper.xml'.
-  # type-aliases-package: com.fhdone.java2022.april.dto
+  # type-aliases-package: com.fhdone.java2022.march.dto
   # mapper-locations: classpath:mapper/**/*.xml
   
 pagehelper:

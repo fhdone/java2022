@@ -27,7 +27,7 @@ public class DbDemoConfig {
         SqlSessionFactoryBean factoryBean = new SqlSessionFactoryBean();
         factoryBean.setDataSource(dataSourceDbDemo);
         factoryBean.setMapperLocations(new PathMatchingResourcePatternResolver().getResources("classpath:mapper/demo/*.xml"));
-//        factoryBean.setTypeAliasesPackage("com.fhdone.java2022.april.dto.demo");
+//        factoryBean.setTypeAliasesPackage("com.fhdone.java2022.march.dto.demo");
         return factoryBean.getObject();
     }
 
