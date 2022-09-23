@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org/DTD Mapper 3.0" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.fhdone.java2022.august.mapper.demo.ContactMapper">
+    
+    <select id="selectContract" parameterType="com.fhdone.java2022.march.dto.demo.Contract" 
+            resultType="com.fhdone.java2022.march.dto.demo.Contract">
+        SELECT  * FROM  CONTACTS
+    </select>
+
+    
+</mapper>
