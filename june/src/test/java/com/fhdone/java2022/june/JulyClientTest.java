@@ -10,14 +10,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import java.util.List;
 
 @Slf4j
-public class JuneClientTest extends BaseTest{
+public class JulyClientTest extends BaseTest{
 
     @Autowired
-    private JuneClient juneClient;
+    private JulyClient julyClient;
 
     @Test
     public void july(){
-        String result = JSON.toJSONString(juneClient.july());
+        String result = JSON.toJSONString(julyClient.july());
         log.info(result);
         Assert.assertEquals("\"test ok\"", result);
     }
@@ -25,7 +25,7 @@ public class JuneClientTest extends BaseTest{
     @Test
     public void queryContact(){
         for(int i=0; i<100; i++) {
-            List<Contract> list = juneClient.queryContact();
+            List<Contract> list = julyClient.queryContact();
             log.info(JSON.toJSONString(list));
         }
     }

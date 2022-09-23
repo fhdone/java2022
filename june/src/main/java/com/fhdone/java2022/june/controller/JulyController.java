@@ -1,7 +1,7 @@
 package com.fhdone.java2022.june.controller;
 
 import com.fhdone.java2022.march.dto.ResultInfo;
-import com.fhdone.java2022.june.JuneClient;
+import com.fhdone.java2022.june.JulyClient;
 import com.netflix.hystrix.contrib.javanica.annotation.DefaultProperties;
 import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
 import com.netflix.hystrix.contrib.javanica.annotation.HystrixProperty;
@@ -17,9 +17,9 @@ import org.springframework.web.bind.annotation.RestController;
 @Slf4j
 @AllArgsConstructor
 @DefaultProperties(defaultFallback = "hstrixDefault")
-public class JuneController {
+public class JulyController {
 
-    private JuneClient juneClient;
+    private JulyClient julyClient;
 
     @GetMapping("/july")
     //@HystrixCommand
@@ -27,13 +27,13 @@ public class JuneController {
      //,fallbackMethod = "hstrixDefault"
     )
     public ResultInfo july(){
-        ResultInfo resultInfo = ResultInfo.instanceSuccess(juneClient.july());
+        ResultInfo resultInfo = ResultInfo.instanceSuccess(julyClient.july());
         return resultInfo;
     }
 
     @GetMapping("/queryContact")
     public ResultInfo queryContact(){
-        ResultInfo resultInfo = ResultInfo.instanceSuccess(juneClient.queryContact());
+        ResultInfo resultInfo = ResultInfo.instanceSuccess(julyClient.queryContact());
         return resultInfo;
     }
 

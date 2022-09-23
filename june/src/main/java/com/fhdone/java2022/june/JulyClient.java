@@ -12,7 +12,7 @@ import java.util.List;
 @Service
 @FeignClient("july-eureka-service")
 @LoadBalancerClient(name = "july-eureka-service", configuration = LoadBalancerConfig.class)
-public interface JuneClient {
+public interface JulyClient {
 
   @GetMapping("/test")
   public String july();
