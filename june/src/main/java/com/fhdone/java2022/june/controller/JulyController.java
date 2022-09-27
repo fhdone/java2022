@@ -1,7 +1,7 @@
 package com.fhdone.java2022.june.controller;
 
-import com.fhdone.java2022.march.dto.ResultInfo;
 import com.fhdone.java2022.june.JulyClient;
+import com.fhdone.java2022.march.dto.ResultInfo;
 import com.netflix.hystrix.contrib.javanica.annotation.DefaultProperties;
 import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
 import com.netflix.hystrix.contrib.javanica.annotation.HystrixProperty;
@@ -22,9 +22,11 @@ public class JulyController {
     private JulyClient julyClient;
 
     @GetMapping("/july")
-    //@HystrixCommand
-    @HystrixCommand(commandProperties = {@HystrixProperty(name="execution.isolation.thread.timeoutInMilliseconds",value="2000")}
-     //,fallbackMethod = "hstrixDefault"
+    @HystrixCommand(fallbackMethod = "hstrixDefault", 
+        commandProperties = {
+        @HystrixProperty(
+            name="execution.isolation.thread.timeoutInMilliseconds",
+            value="1000")}
     )
     public ResultInfo july(){
         ResultInfo resultInfo = ResultInfo.instanceSuccess(julyClient.july());
@@ -32,8 +34,27 @@ public class JulyController {
     }
 
     @GetMapping("/queryContact")
-    public ResultInfo queryContact(){
+    @HystrixCommand(fallbackMethod = "hstrixDefault", 
+        commandProperties = {
+        @HystrixProperty(
+            name="execution.isolation.thread.timeoutInMilliseconds",
+            value="1000"),
+        @HystrixProperty(
+            name="circuitBreaker.requestVolumeThreshold",
+            value="2"),
+        @HystrixProperty(
+            name="circuitBreaker.errorThresholdPercentage",
+            value="2"),
+        @HystrixProperty(
+            name="metrics.rollingStats.timeInMilliseconds",
+            value="1000"),
+        @HystrixProperty(
+            name="circuitBreaker.sleepWindowInMilliseconds",
+            value="1000")
+    })
+    public ResultInfo queryContact() throws Exception {
         ResultInfo resultInfo = ResultInfo.instanceSuccess(julyClient.queryContact());
+//        TimeUnit.SECONDS.sleep(1000);
         return resultInfo;
     }
 
