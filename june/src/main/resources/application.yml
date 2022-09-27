@@ -21,3 +21,9 @@ feign:
         readTimeout: 5000   # 读超时时间
         loggerLevel: full # 日志级别
         
+        
+management:
+  endpoints:
+    web:
+      exposure:
+        include: hystrix.stream        
