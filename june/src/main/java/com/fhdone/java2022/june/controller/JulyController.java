@@ -39,20 +39,10 @@ public class JulyController {
             value="500")
     })
     public ResultInfo queryContact() throws Exception {
-        
-        Random r = new Random();
-        if(r.nextInt()%2==0){
-            throw new Exception();
-        }
-            
         ResultInfo resultInfo = ResultInfo.instanceSuccess(julyClient.queryContact());
-        TimeUnit.MILLISECONDS.sleep(r.nextInt(100));
         return resultInfo;
     }
 
-
-    
-    
     @GetMapping("/hstrixDemo")
     @HystrixCommand( 
         commandProperties = {
