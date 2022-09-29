@@ -16,7 +16,7 @@ public class AugustClientTest extends BaseTest{
     private AugustClient augustClient;
 
     @Test
-    public void july(){
+    public void august(){
         String result = JSON.toJSONString(augustClient.july());
         log.info(result);
         Assert.assertEquals("\"test ok\"", result);
