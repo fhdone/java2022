@@ -75,10 +75,10 @@ eureka:
 #    fetch-registry: true
 
 management:
-#  endpoints:
-#    web:
-#      exposure:
-#        include: "*"
-  endpoint:
-    health:
-      show-details: ALWAYS      
+  endpoints:
+    web:
+      exposure:
+        include: ["health","info","mappings","env"]
+#  endpoint:
+#    health:
+#      show-details: ALWAYS      
