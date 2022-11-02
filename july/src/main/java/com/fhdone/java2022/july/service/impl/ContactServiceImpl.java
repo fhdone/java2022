@@ -39,8 +39,7 @@ public class ContactServiceImpl implements ContactService {
     @Override
     @Transactional(rollbackFor = Exception.class) 
     public Long insertContact(Contract contract) {
-        long c = contactMapper.insertContract(contract);
-        return c;
+        return contactMapper.insertContract(contract);
     }
 
     @Override
