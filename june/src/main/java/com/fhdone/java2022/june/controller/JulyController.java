@@ -22,6 +22,8 @@ import java.util.concurrent.TimeUnit;
 @DefaultProperties(defaultFallback = "hstrixDefault")
 public class JulyController {
 
+    private static final Random RANDOM = new Random();
+    
     private JulyClient julyClient;
 
     @GetMapping("/july")
@@ -70,13 +72,12 @@ public class JulyController {
     })
     public ResultInfo hstrixDemo() throws Exception {
         
-        Random r = new Random();
-        if(r.nextInt()%5==0){
+        if(RANDOM.nextInt()%5==0){
             throw new Exception();
         }
             
         ResultInfo resultInfo = ResultInfo.instanceSuccess(julyClient.queryContact());
-        TimeUnit.MILLISECONDS.sleep(r.nextInt(r.nextInt(1000)));
+        TimeUnit.MILLISECONDS.sleep(RANDOM.nextInt(RANDOM.nextInt(1000)));
         return resultInfo;
     }
     
