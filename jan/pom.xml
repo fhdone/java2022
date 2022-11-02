@@ -4,14 +4,14 @@
 
 	<groupId>com.fhdone</groupId>
 	<artifactId>java2022-jan-eureka</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>0.0.1</version>
 	<packaging>jar</packaging>
 	<name>jan-eureka</name>
 
 	<parent>
 		<groupId>com.fhdone</groupId>
 		<artifactId>java2022-april-common</artifactId>
-		<version>0.0.1-SNAPSHOT</version>
+		<version>0.0.1</version>
 		<relativePath   />
 	</parent>
 	
