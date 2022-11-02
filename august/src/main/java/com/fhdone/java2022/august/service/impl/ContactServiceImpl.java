@@ -37,25 +37,22 @@ public class ContactServiceImpl implements ContactService {
     }
     
     @Override
-    @Transactional 
+    @Transactional(rollbackFor = Exception.class)
     public Long insertContact(Contract contract) {
         long c = contactMapper.insertContract(contract);
         return c;
     }
 
     @Override
-    @Transactional
+    @Transactional(rollbackFor = Exception.class)
     public Long insertContact(List<Contract> list) {
         Long count = 0L;
-        SqlSession sqlSession = sqlSessionFactoryDbDemo.openSession(ExecutorType.BATCH);
-        try {
+        try (SqlSession sqlSession = sqlSessionFactoryDbDemo.openSession(ExecutorType.BATCH)) {
             for (Contract contract : list) {
                 contactMapper.insertContract(contract);
                 count++;
             }
             sqlSession.commit();
-        } finally {
-            sqlSession.close();
         }
         return count;
     }
