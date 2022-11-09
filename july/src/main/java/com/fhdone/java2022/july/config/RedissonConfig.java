@@ -20,7 +20,7 @@ public class RedissonConfig {
         SingleServerConfig singleServerConfig = config.useSingleServer();
         //可以用"rediss://"来启用SSL连接
         singleServerConfig.setAddress("redis://127.0.0.1:6379");
-        //singleServerConfig.setPassword("123456");
+        singleServerConfig.setPassword("123456");
 
 //        Codec codec = new JsonJacksonCodec();
         Codec codec = new StringCodec();
