@@ -1,5 +1,5 @@
 brew services start mysql
-/Users/fhdone/dev/redis-6.0.9/src/redis-server 
+/Users/fhdone/dev/redis-6.0.9/src/redis-server /Users/fhdone/dev/redis-6.0.9/redis.conf
 
 
 brew services stop mysql
