@@ -38,7 +38,7 @@ public class JulyController {
         commandProperties = {
         @HystrixProperty(
             name="execution.isolation.thread.timeoutInMilliseconds",
-            value="500")
+            value="1000")
     })
     public ResultInfo queryContact() throws Exception {
         ResultInfo resultInfo = ResultInfo.instanceSuccess(julyClient.queryContact());
