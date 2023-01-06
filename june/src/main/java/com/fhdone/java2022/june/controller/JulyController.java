@@ -79,6 +79,7 @@ public class JulyController {
 
     @GetMapping("/mockHstrixDemo")
     @HystrixCommand(
+        defaultFallback = "hstrixDefault2",
         commandProperties = {
             @HystrixProperty(
                 name="execution.isolation.thread.timeoutInMilliseconds",
@@ -88,11 +89,11 @@ public class JulyController {
 
         if(RANDOM.nextInt()%5==0){
             log.info("throw RuntimeException");
-            throw new RuntimeException("eeeeeeeee");
+            throw new RuntimeException("i am a RuntimeException");
         }
 
         ResultInfo resultInfo = ResultInfo.instanceSuccess(julyClient.queryContact());
-        
+
         long timeCount = RANDOM.nextInt(RANDOM.nextInt(1000));
         log.info("sleep MILLISECONDS: {}" , timeCount);
         TimeUnit.MILLISECONDS.sleep(timeCount);
@@ -105,6 +106,11 @@ public class JulyController {
     private ResultInfo hstrixDefault() {
         log.warn("发生服务降级");
         return ResultInfo.instanceFail("hstrixDefault");
+    }
+
+    private ResultInfo hstrixDefault2() {
+        log.warn("发生服务降级2");
+        return ResultInfo.instanceFail("hstrixDefault2");
     }
 
 }
