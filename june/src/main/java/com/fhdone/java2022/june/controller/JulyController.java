@@ -23,7 +23,7 @@ import java.util.concurrent.TimeUnit;
 public class JulyController {
 
     private static final Random RANDOM = new Random();
-    
+
     private JulyClient julyClient;
 
     @GetMapping("/july")
@@ -34,23 +34,23 @@ public class JulyController {
     }
 
     @GetMapping("/queryContact")
-    @HystrixCommand( 
+    @HystrixCommand(
         commandProperties = {
-        @HystrixProperty(
-            name="execution.isolation.thread.timeoutInMilliseconds",
-            value="1000")
-    })
+            @HystrixProperty(
+                name="execution.isolation.thread.timeoutInMilliseconds",
+                value="1000")
+        })
     public ResultInfo queryContact() throws Exception {
         ResultInfo resultInfo = ResultInfo.instanceSuccess(julyClient.queryContact());
         return resultInfo;
     }
 
     @GetMapping("/hstrixDemo")
-    @HystrixCommand( 
+    @HystrixCommand(
         commandProperties = {
-        @HystrixProperty(
-            name="execution.isolation.thread.timeoutInMilliseconds",
-            value="200")
+            @HystrixProperty(
+                name="execution.isolation.thread.timeoutInMilliseconds",
+                value="200")
 //        @HystrixProperty(
 //            name="circuitBreaker.requestVolumeThreshold",
 //            value="2"),
@@ -69,24 +69,42 @@ public class JulyController {
 //        @HystrixProperty(
 //            name="execution.isolation.semaphore.maxConcurrentRequests",
 //            value="2")    
-    })
+        })
     public ResultInfo hstrixDemo() throws Exception {
-        
-        if(RANDOM.nextInt()%5==0){
-            throw new Exception();
-        }
-            
         ResultInfo resultInfo = ResultInfo.instanceSuccess(julyClient.queryContact());
-        TimeUnit.MILLISECONDS.sleep(RANDOM.nextInt(RANDOM.nextInt(1000)));
         return resultInfo;
     }
-    
-    
-    
-    
+
+
+
+    @GetMapping("/mockHstrixDemo")
+    @HystrixCommand(
+        commandProperties = {
+            @HystrixProperty(
+                name="execution.isolation.thread.timeoutInMilliseconds",
+                value="200")
+        })
+    public ResultInfo demoHstrixDemo() throws Exception {
+
+        if(RANDOM.nextInt()%5==0){
+            log.info("throw RuntimeException");
+            throw new RuntimeException("eeeeeeeee");
+        }
+
+        ResultInfo resultInfo = ResultInfo.instanceSuccess(julyClient.queryContact());
+        
+        long timeCount = RANDOM.nextInt(RANDOM.nextInt(1000));
+        log.info("sleep MILLISECONDS: {}" , timeCount);
+        TimeUnit.MILLISECONDS.sleep(timeCount);
+        return resultInfo;
+    }
+
+
+
+
     private ResultInfo hstrixDefault() {
         log.warn("发生服务降级");
         return ResultInfo.instanceFail("hstrixDefault");
     }
-    
+
 }
