@@ -20,10 +20,15 @@ import java.util.concurrent.BlockingQueue;
 @Slf4j
 public class TaskQueryRunner {
 
-    private static final int MAX_QUEUE_SIZE = 4;
+    // ###### TEST USE START ######
     private static final String MOCK_JOB_CRON = "0/5 * * * * ?";
     private static final int GEN_JOB_BATCH_SIZE = 2;
+    public static final int JOB_RUN_ELASPE = 10;
+    // ###### TEST USE END ######
     
+    
+    private static final int MAX_QUEUE_SIZE = 4;
+        
     private Date nextFireTime = new Date();
 
     @Getter
