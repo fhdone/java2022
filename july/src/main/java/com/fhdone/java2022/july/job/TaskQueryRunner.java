@@ -1,17 +1,15 @@
 package com.fhdone.java2022.july.job;
 
 import com.fhdone.java2022.july.job.dto.JobDetail;
+import com.fhdone.java2022.july.utils.TaskUtils;
 import lombok.Getter;
 import lombok.extern.slf4j.Slf4j;
-import org.apache.commons.lang.RandomStringUtils;
 import org.apache.logging.log4j.core.util.CronExpression;
 import org.springframework.scheduling.annotation.EnableScheduling;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 
 import java.util.Date;
-import java.util.HashMap;
-import java.util.Map;
 import java.util.concurrent.ArrayBlockingQueue;
 import java.util.concurrent.BlockingQueue;
 
@@ -24,7 +22,6 @@ import java.util.concurrent.BlockingQueue;
 public class TaskQueryRunner {
 
     // ###### TEST USE START ######
-    private static final String MOCK_JOB_CRON = "0/5 * * * * ?";
     private static final int RUN_JOB_BATCH_SIZE = 2;
     public static final int JOB_RUN_ELASPE = 10;
     // ###### TEST USE END ######
@@ -50,7 +47,7 @@ public class TaskQueryRunner {
      */
     private void taskQuery() throws Exception{
 
-        JobDetail jobDetail = getMockJobDetail();
+        JobDetail jobDetail = TaskUtils.getMockJobDetail();
         CronExpression cronExpression = new CronExpression(jobDetail.getCron());
         Date nextFireTime = jobDetail.getNextFireTime();
         
@@ -82,20 +79,5 @@ public class TaskQueryRunner {
         }
     }
 
-
-    private JobDetail<Map<String, Object>> getMockJobDetail(){
-        String jobString = RandomStringUtils.random(20, true, true);
-        JobDetail<Map<String, Object>> jobDetail = new JobDetail();
-        jobDetail.setId(jobString);
-        jobDetail.setCron(MOCK_JOB_CRON);
-        jobDetail.setServiceId("DemoTaskServiceImpl");
-        jobDetail.setNextFireTime(new Date());
-        
-        Map<String, Object> detailMap = new HashMap<>();
-        detailMap.put("jobString",jobString);
-        jobDetail.setDetail(detailMap);
-        
-        return jobDetail;
-    }
 
 }

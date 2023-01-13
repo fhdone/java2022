@@ -10,6 +10,7 @@ import java.util.Date;
 public class JobDetail<T> {
     
     private String id;
+    
     private String serviceId;
     
     private T detail;
