@@ -1,15 +1,14 @@
 package com.fhdone.java2022.july.job;
 
+import com.fhdone.java2022.july.job.dto.JobDetail;
 import com.fhdone.java2022.july.job.service.TaskService;
 import com.fhdone.java2022.july.job.service.impl.DemoTaskServiceImpl;
-import com.fhdone.java2022.july.service.RedisService;
 import com.google.common.util.concurrent.ThreadFactoryBuilder;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
 
 import javax.annotation.PostConstruct;
 import javax.annotation.Resource;
-import java.util.Random;
 import java.util.concurrent.*;
 
 @Component
@@ -41,12 +40,12 @@ public class TaskExecuteJob {
         public void run() {
             while (true) {
                 try {
-                    Object obj = TaskQueryRunner.getJOB_QUEUE().take();
-                    boolean taskResult = demoTaskService.runTask(obj);
+                    JobDetail jobDetail = TaskQueryRunner.getJOB_QUEUE().take();
+                    boolean taskResult = demoTaskService.runTask(jobDetail);
                     if(taskResult){
-                        demoTaskService.runTaskSuccess(obj);
+                        demoTaskService.runTaskSuccess(jobDetail);
                     }else{
-                        demoTaskService.runTaskFailed(obj);
+                        demoTaskService.runTaskFailed(jobDetail);
                     }
                 } catch (Exception e) {
                     log.error("taskExecute error:", e);
