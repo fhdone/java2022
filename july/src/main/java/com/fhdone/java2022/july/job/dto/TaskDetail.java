@@ -11,16 +11,18 @@ import java.util.Date;
 @Data
 @NoArgsConstructor
 public class TaskDetail<T> {
-    
+
     private String id;
-    
+
     private String serviceId;
-    
+
     private T detail;
-    
+
     private String cron;
-    
+
     private Date nextFireTime;
+
+    private Date lastFireTime;
 
 
 }

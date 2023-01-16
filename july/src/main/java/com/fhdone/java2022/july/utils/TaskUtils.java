@@ -24,6 +24,7 @@ public class TaskUtils {
         taskDetail.setCron(MOCK_JOB_CRON_5);
         taskDetail.setServiceId(DemoTaskServiceImpl.SERVICE_ID);
         taskDetail.setNextFireTime(new Date());
+//        taskDetail.setLastFireTime(new Date());
 
         Map<String, Object> detailMap = new HashMap<>();
         detailMap.put("jobString",jobString);
@@ -40,6 +41,7 @@ public class TaskUtils {
         taskDetail.setCron(MOCK_JOB_CRON_10);
         taskDetail.setServiceId(Demo2TaskServiceImpl.SERVICE_ID);
         taskDetail.setNextFireTime(new Date());
+//        taskDetail.setLastFireTime(new Date());
         taskDetail.setDetail(jobString);
         return taskDetail;
     }

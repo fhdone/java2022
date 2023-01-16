@@ -1,13 +1,10 @@
 package com.fhdone.java2022.july.job;
 
-import com.fhdone.java2022.july.job.service.TaskService;
-import com.fhdone.java2022.july.job.service.impl.DemoTaskServiceImpl;
 import com.google.common.util.concurrent.ThreadFactoryBuilder;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
 
 import javax.annotation.PostConstruct;
-import javax.annotation.Resource;
 import java.util.concurrent.*;
 
 @Component

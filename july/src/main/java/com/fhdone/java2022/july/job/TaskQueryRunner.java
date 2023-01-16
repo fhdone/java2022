@@ -61,6 +61,7 @@ public class TaskQueryRunner {
             if (nextFireTime.before(new Date())) {
                 log.debug("nextFireTime: {} , now:{}", nextFireTime, new Date());
                 this.putTaskIntoQueue(taskDetail);
+                taskDetail.setLastFireTime(nextFireTime);
                 taskDetail.setNextFireTime(cronExpression.getTimeAfter(nextFireTime));
             } else {
                 log.info("nextFireTime not up to time");
