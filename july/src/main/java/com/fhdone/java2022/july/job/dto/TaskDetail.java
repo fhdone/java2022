@@ -5,9 +5,12 @@ import lombok.NoArgsConstructor;
 
 import java.util.Date;
 
+/**
+ * @author fhdone
+ */
 @Data
 @NoArgsConstructor
-public class JobDetail<T> {
+public class TaskDetail<T> {
     
     private String id;
     

@@ -1,6 +1,6 @@
 package com.fhdone.java2022.july.job;
 
-import com.fhdone.java2022.july.job.dto.JobDetail;
+import com.fhdone.java2022.july.job.dto.TaskDetail;
 import com.fhdone.java2022.july.utils.TaskUtils;
 import lombok.Getter;
 import lombok.extern.slf4j.Slf4j;
@@ -15,6 +15,7 @@ import java.util.concurrent.BlockingQueue;
 
 /**
  * query job then offer into JOB_QUEUE[BlockingQueue]
+ * @author fhdone
  */
 @Component
 @EnableScheduling
@@ -30,7 +31,7 @@ public class TaskQueryRunner {
         
 
     @Getter
-    private static BlockingQueue<JobDetail> JOB_QUEUE = new ArrayBlockingQueue<>(MAX_QUEUE_SIZE);
+    private static BlockingQueue<TaskDetail<?>> JOB_QUEUE = new ArrayBlockingQueue<>(MAX_QUEUE_SIZE);
 
     @Scheduled(cron = "0/1 * * * * ?")
     public void taskQueryRunner() {
@@ -47,14 +48,14 @@ public class TaskQueryRunner {
      */
     private void taskQuery() throws Exception{
 
-        JobDetail jobDetail = TaskUtils.getMockJobDetail();
-        CronExpression cronExpression = new CronExpression(jobDetail.getCron());
-        Date nextFireTime = jobDetail.getNextFireTime();
+        TaskDetail<?> taskDetail = TaskUtils.getMockJobDetail();
+        CronExpression cronExpression = new CronExpression(taskDetail.getCron());
+        Date nextFireTime = taskDetail.getNextFireTime();
         
         if(nextFireTime.before(new Date())){
             log.debug("nextFireTime: {} , now:{}", nextFireTime, new Date());
-            this.putTaskIntoQueue(jobDetail);
-            jobDetail.setNextFireTime(cronExpression.getTimeAfter(nextFireTime));
+            this.putTaskIntoQueue(taskDetail);
+            taskDetail.setNextFireTime(cronExpression.getTimeAfter(nextFireTime));
         }else{
             log.info("nextFireTime not up to time");
         }
@@ -63,18 +64,18 @@ public class TaskQueryRunner {
     /**
      * putTaskIntoQueue
      */
-    private void putTaskIntoQueue(JobDetail jobDetail) {
+    private void putTaskIntoQueue(TaskDetail<?>  taskDetail) {
         for(int i = 0; i< RUN_JOB_BATCH_SIZE; i++) {
             if(JOB_QUEUE.size() >= MAX_QUEUE_SIZE){
                 log.info("JOB_QUEUE is full, ignore");
                 continue;
             }
-            boolean r = JOB_QUEUE.offer(jobDetail);
+            boolean r = JOB_QUEUE.offer(taskDetail);
             if(!r){
-                log.warn("pub job {} error, ignore", jobDetail.getId());
+                log.warn("pub job {} error, ignore", taskDetail.getId());
                 break;
             }else{
-                log.info("success put job: {}" , jobDetail.getId());
+                log.info("success put job: {}" , taskDetail.getId());
             }
         }
     }

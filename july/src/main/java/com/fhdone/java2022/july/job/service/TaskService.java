@@ -1,16 +1,17 @@
 package com.fhdone.java2022.july.job.service;
 
-import lombok.extern.slf4j.Slf4j;
+import com.fhdone.java2022.july.job.dto.TaskDetail;
 
 /**
  * task service
+ * @author fhdone
  */
-public interface TaskService<JobDetail> {
+public interface TaskService<E> {
     
-    public boolean runTaskSuccess(JobDetail jobDetail);
+    public boolean runTaskSuccess(TaskDetail<E> taskDetail);
     
-    public boolean runTaskFailed(JobDetail jobDetail);
+    public boolean runTaskFailed(TaskDetail<E> taskDetail);
     
-    public boolean runTask(JobDetail jobDetail);
+    public boolean runTask(TaskDetail<E> taskDetail);
     
 }
