@@ -2,6 +2,7 @@ package com.fhdone.java2022.july.job;
 
 import com.fhdone.java2022.july.job.dto.TaskDetail;
 import com.fhdone.java2022.july.job.service.TaskService;
+import com.fhdone.java2022.july.job.service.impl.Demo2TaskServiceImpl;
 import com.fhdone.java2022.july.job.service.impl.DemoTaskServiceImpl;
 import com.fhdone.java2022.july.utils.ApplicationContextUtil;
 import lombok.extern.slf4j.Slf4j;
@@ -17,7 +18,7 @@ public class TaskRunner implements Runnable {
     public void run() {
         while (true) {
             try {
-                TaskDetail taskDetail = TaskQueryRunner.getJOB_QUEUE().take();
+                TaskDetail<?> taskDetail = TaskQueryRunner.getJOB_QUEUE().take();
                 TaskService taskService = this.getTaskService(taskDetail);
                 if(taskService==null){
                     throw new RuntimeException("taskService can not get");
@@ -34,12 +35,15 @@ public class TaskRunner implements Runnable {
         }
     }
 
-    private TaskService getTaskService(TaskDetail taskDetail) {
+    private TaskService<?> getTaskService(TaskDetail<?> taskDetail) {
         String serviceId = taskDetail.getServiceId();
         switch (serviceId) {
             case DemoTaskServiceImpl.SERVICE_ID:
                 log.debug("getTaskService: {}", DemoTaskServiceImpl.SERVICE_ID);
                 return ApplicationContextUtil.getBean(DemoTaskServiceImpl.SERVICE_ID);
+            case Demo2TaskServiceImpl.SERVICE_ID:
+                log.debug("getTaskService: {}", Demo2TaskServiceImpl.SERVICE_ID);
+                return ApplicationContextUtil.getBean(Demo2TaskServiceImpl.SERVICE_ID);
             default:
                 //ignore
                 log.error("getTaskService error, empty");

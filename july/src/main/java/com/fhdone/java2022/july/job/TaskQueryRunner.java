@@ -9,7 +9,9 @@ import org.springframework.scheduling.annotation.EnableScheduling;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 import java.util.concurrent.ArrayBlockingQueue;
 import java.util.concurrent.BlockingQueue;
 
@@ -26,9 +28,9 @@ public class TaskQueryRunner {
     private static final int RUN_JOB_BATCH_SIZE = 2;
     public static final int JOB_RUN_ELASPE = 10;
     // ###### TEST USE END ######
-    
+
     private static final int MAX_QUEUE_SIZE = 4;
-        
+
 
     @Getter
     private static BlockingQueue<TaskDetail<?>> JOB_QUEUE = new ArrayBlockingQueue<>(MAX_QUEUE_SIZE);
@@ -48,16 +50,21 @@ public class TaskQueryRunner {
      */
     private void taskQuery() throws Exception{
 
-        TaskDetail<?> taskDetail = TaskUtils.getMockJobDetail();
-        CronExpression cronExpression = new CronExpression(taskDetail.getCron());
-        Date nextFireTime = taskDetail.getNextFireTime();
-        
-        if(nextFireTime.before(new Date())){
-            log.debug("nextFireTime: {} , now:{}", nextFireTime, new Date());
-            this.putTaskIntoQueue(taskDetail);
-            taskDetail.setNextFireTime(cronExpression.getTimeAfter(nextFireTime));
-        }else{
-            log.info("nextFireTime not up to time");
+        List<TaskDetail<?>> list = new ArrayList<>();
+        list.add(TaskUtils.getMockJobDetail());
+        list.add(TaskUtils.getMockJobDetail2());
+
+        for(TaskDetail<?> taskDetail: list) {
+            CronExpression cronExpression = new CronExpression(taskDetail.getCron());
+            Date nextFireTime = taskDetail.getNextFireTime();
+
+            if (nextFireTime.before(new Date())) {
+                log.debug("nextFireTime: {} , now:{}", nextFireTime, new Date());
+                this.putTaskIntoQueue(taskDetail);
+                taskDetail.setNextFireTime(cronExpression.getTimeAfter(nextFireTime));
+            } else {
+                log.info("nextFireTime not up to time");
+            }
         }
     }
 

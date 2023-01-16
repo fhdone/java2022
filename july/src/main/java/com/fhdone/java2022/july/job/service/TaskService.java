@@ -6,12 +6,12 @@ import com.fhdone.java2022.july.job.dto.TaskDetail;
  * task service
  * @author fhdone
  */
-public interface TaskService<E> {
+public interface TaskService<T> {
     
-    public boolean runTaskSuccess(TaskDetail<E> taskDetail);
+    boolean runTaskSuccess(TaskDetail<T> taskDetail);
     
-    public boolean runTaskFailed(TaskDetail<E> taskDetail);
+    boolean runTaskFailed(TaskDetail<T> taskDetail);
     
-    public boolean runTask(TaskDetail<E> taskDetail);
+    boolean runTask(TaskDetail<T> taskDetail);
     
 }
