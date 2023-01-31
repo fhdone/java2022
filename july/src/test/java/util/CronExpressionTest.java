@@ -11,8 +11,17 @@ public class CronExpressionTest {
 
     @Test
     public void getTimeAfter() throws Exception {
-        String cron = "0 15 10 ? * * ";
-        CronExpression cronExpression = new CronExpression(cron);
+        log.info("##### 0 15 10 ? * *  #####");
+        this.calcTimeAfter("0 15 10 ? * * ");
+        
+        log.info("##### 0 0 12 ? * WED #####");
+        this.calcTimeAfter("0 0 12 ? * WED ");
+    }
+    
+    
+    
+    public void calcTimeAfter(String cronStr) throws Exception {
+        CronExpression cronExpression = new CronExpression(cronStr);
         
         Date nextFiredDate = new Date();
         for(int i=0; i<5; i++) {
