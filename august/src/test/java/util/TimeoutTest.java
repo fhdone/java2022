@@ -57,14 +57,16 @@ public class TimeoutTest {
      * @return
      */
     private static String unknowMethod() {
+        System.out.println("任务【unknowMethod】开始");
         Random random = new Random();
         int time = (random.nextInt(10) + 1) * 1000;
-        System.out.println("任务将耗时： " + time + "毫秒");
+        System.out.println("任务【unknowMethod】将耗时： " + time + "毫秒");
         try {
             Thread.sleep(time);
         } catch (Exception e) {
             // ignore
         }
+        System.out.println("任务【unknowMethod】结束");
         return "获得方法执行后的返回值";
     }
 
