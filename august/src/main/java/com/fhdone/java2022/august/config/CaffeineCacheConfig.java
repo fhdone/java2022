@@ -8,7 +8,7 @@ import org.springframework.context.annotation.Configuration;
 import java.util.concurrent.TimeUnit;
 
 @Configuration
-public class CacheConfig {
+public class CaffeineCacheConfig {
 
     public final static  long DURATION = 5;
     @Bean

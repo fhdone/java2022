@@ -10,7 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import java.util.concurrent.TimeUnit;
 
 @Slf4j
-public class CacheConfigTest extends BaseTest {
+public class CaffeineCacheConfigTest extends BaseTest {
 
     @Autowired
     private Cache<String, Object> cache;
@@ -21,7 +21,7 @@ public class CacheConfigTest extends BaseTest {
         log.info(cache.getIfPresent("key")+"");
         Assert.assertEquals("value",cache.getIfPresent("key"));
 
-        TimeUnit.SECONDS.sleep(CacheConfig.DURATION);
+        TimeUnit.SECONDS.sleep(CaffeineCacheConfig.DURATION);
         Assert.assertNull(cache.getIfPresent("key"));
     }
 
