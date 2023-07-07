@@ -40,7 +40,7 @@ public class GlobalErrorAttributes extends DefaultErrorAttributes {
                                            MergedAnnotation<ResponseStatus> responseStatusAnnotation) {
         
         if (error instanceof ResponseStatusException) {
-            return ((ResponseStatusException) error).getStatus();
+           // return ((ResponseStatusException) error).getStatus();
         }
         return responseStatusAnnotation.getValue("code", HttpStatus.class).orElse(HttpStatus.INTERNAL_SERVER_ERROR);
     }

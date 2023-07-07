@@ -2,12 +2,11 @@ package com.fhdone.java2022.july.aspect;
 
 import com.zaxxer.hikari.HikariDataSource;
 import com.zaxxer.hikari.HikariPoolMXBean;
+import jakarta.annotation.Resource;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.scheduling.annotation.EnableScheduling;
 import org.springframework.scheduling.annotation.Scheduled;
-import org.springframework.stereotype.Component;
 
-import javax.annotation.Resource;
 import javax.management.JMX;
 import javax.management.MBeanServer;
 import javax.management.ObjectName;
