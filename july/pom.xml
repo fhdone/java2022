@@ -82,12 +82,12 @@
 		<dependency>
 			<groupId>com.github.pagehelper</groupId>
 			<artifactId>pagehelper-spring-boot-starter</artifactId>
-			<version>1.4.3</version>
+			<version>1.4.7</version>
 		</dependency>
 		<dependency>
 			<groupId>org.redisson</groupId>
 			<artifactId>redisson-spring-boot-starter</artifactId>
-			<version>3.17.4</version>
+			<version>3.22.1</version>
 		</dependency>
 		<dependency>
 			<groupId>redis.clients</groupId>
@@ -96,7 +96,7 @@
 		<dependency>
 			<groupId>mysql</groupId>
 			<artifactId>mysql-connector-java</artifactId>
-			<version>8.0.29</version>
+			<version>8.0.33</version>
 		</dependency>
 		<dependency>
 			<groupId>com.jayway.jsonpath</groupId>
