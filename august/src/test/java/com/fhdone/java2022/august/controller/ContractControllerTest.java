@@ -44,7 +44,7 @@ public class ContractControllerTest extends BaseTest {
 
         HttpEntity<String> request = new HttpEntity<>(JSON.toJSONString(paraMap), headers);
 
-        ResponseEntity<Contract[]> response = template.postForEntity("/contract/queryContactByCondition/",
+        ResponseEntity<Contract[]> response = template.postForEntity("/contract/queryContactByCondition",
             request, Contract[].class );
 
         log.info(JSON.toJSONString(response));
