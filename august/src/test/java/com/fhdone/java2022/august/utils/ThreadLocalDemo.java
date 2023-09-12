@@ -14,9 +14,8 @@ import java.util.concurrent.TimeUnit;
 public class ThreadLocalDemo {
 
 //     private static ThreadLocal<String> ttl = new ThreadLocal<>();
-//      private static ThreadLocal<String> ttl = new InheritableThreadLocal<>();
-
-    private static ThreadLocal<String> transmittableThreadLocal = new TransmittableThreadLocal<>();
+//     private static ThreadLocal<String> ttl = new InheritableThreadLocal<>();
+    private static ThreadLocal<String> ttl = new TransmittableThreadLocal<>();
 
 
     @Test
@@ -27,14 +26,14 @@ public class ThreadLocalDemo {
                 1,1,0,TimeUnit.SECONDS,new ArrayBlockingQueue<>(10)
         );
 
-        transmittableThreadLocal.set("raw info");
+        ttl.set("raw info");
 
         for (int i = 0; i < 5; i++) {
             if (i == 2) {
-                transmittableThreadLocal.set("raw info has changed");
+                ttl.set("raw info has changed");
             }
             TtlRunnable runnable = TtlRunnable.get(() -> {
-                log.info(Thread.currentThread().getName() + " : " + transmittableThreadLocal.get());
+                log.info(Thread.currentThread().getName() + " : " + ttl.get());
             });
 
             threadPoolExecutor.execute(runnable);
