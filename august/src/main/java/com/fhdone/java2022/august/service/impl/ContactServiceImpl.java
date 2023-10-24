@@ -4,7 +4,6 @@ import com.fhdone.java2022.august.mapper.demo.ContactMapper;
 import com.fhdone.java2022.august.service.ContactService;
 import com.fhdone.java2022.march.dto.demo.Contract;
 import com.github.pagehelper.PageHelper;
-import jakarta.annotation.Resource;
 import lombok.AllArgsConstructor;
 import org.apache.ibatis.session.ExecutorType;
 import org.apache.ibatis.session.SqlSession;
@@ -12,6 +11,7 @@ import org.apache.ibatis.session.SqlSessionFactory;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import javax.annotation.Resource;
 import java.util.List;
 
 @Service

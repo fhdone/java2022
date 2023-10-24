@@ -4,7 +4,7 @@ import com.fhdone.java2022.july.mapper.demo.ContactMapper;
 import com.fhdone.java2022.july.service.ContactService;
 import com.fhdone.java2022.march.dto.demo.Contract;
 import com.github.pagehelper.PageHelper;
-import jakarta.annotation.Resource;
+import javax.annotation.Resource;
 import lombok.AllArgsConstructor;
 import org.apache.ibatis.session.ExecutorType;
 import org.apache.ibatis.session.SqlSession;

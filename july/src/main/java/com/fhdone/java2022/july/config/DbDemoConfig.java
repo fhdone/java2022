@@ -1,6 +1,6 @@
 package com.fhdone.java2022.july.config;
 
-import jakarta.annotation.Resource;
+import javax.annotation.Resource;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.mybatis.spring.SqlSessionFactoryBean;
 import org.mybatis.spring.SqlSessionTemplate;

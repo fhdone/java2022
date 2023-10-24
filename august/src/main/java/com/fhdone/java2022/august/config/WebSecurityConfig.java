@@ -37,11 +37,12 @@ public class WebSecurityConfig {  //  extends WebSecurityConfigurerAdapter {
             .passwordEncoder(new BCryptPasswordEncoder());
 
         // 只处理 所有 开头的请求
-        return http.authorizeHttpRequests( authz ->  authz
-                .requestMatchers("/api/**")
-                .hasRole("ADMIN")
-                .anyRequest()  //.authenticated()
-                )
+        return http.antMatcher("/**")
+            .authorizeRequests()
+            // 所有请求都必须要认证才可以访问
+            .anyRequest() //.authenticated()
+            .hasRole("ADMIN")
+            .and()
             // 禁用csrf
             .csrf().disable()
             // 启用表单登录
@@ -56,9 +57,9 @@ public class WebSecurityConfig {  //  extends WebSecurityConfigurerAdapter {
     @Bean
     public WebSecurityCustomizer webSecurityCustomizer( ){
         return web -> web.ignoring()
-            .requestMatchers("/**")
-            .requestMatchers("/*/js/**")
-            .requestMatchers("/*/css/**");
+            .antMatchers("/**/**")
+            .antMatchers("/**/js/**")
+            .antMatchers("/**/css/**");
 
     }
     
