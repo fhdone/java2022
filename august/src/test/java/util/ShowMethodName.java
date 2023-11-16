@@ -5,7 +5,7 @@ import org.junit.jupiter.api.Test;
 
 import java.util.Optional;
 
-public class ShowName {
+public class ShowMethodName {
 
     @Test
     public void t1(){
