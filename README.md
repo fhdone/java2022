@@ -1,6 +1,8 @@
 brew services start mysql
 /Users/fhdone/dev/redis-6.0.9/src/redis-server /Users/fhdone/dev/redis-6.0.9/redis.conf
 
+/Users/fhdone/dev/apache-zookeeper-3.9.1-bin/bin/zkServer.sh start
+
 
 brew services stop mysql
 

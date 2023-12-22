@@ -81,4 +81,18 @@ management:
         include: "*"
   endpoint:
     health:
-      show-details: ALWAYS      
+      show-details: ALWAYS   
+        
+elasticjob:
+  # 注册中心配置
+  regcenter:
+    serverlists: 127.0.0.1:2181
+    # ZooKeeper 的命名空间
+    namespace: elastic-job-x
+  # 作业配置
+  jobs:
+    springJob: # job的名称
+      elasticJobClass: com.fhdone.java2022.august.job.SpringBootJob
+      cron: 0/5 * * * * ?
+      shardingTotalCount: 3
+      shardingItemParameters: 0=Beijing,1=Shanghai,2=Guangzhou
