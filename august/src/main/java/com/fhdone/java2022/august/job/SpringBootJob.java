@@ -16,5 +16,26 @@ public class SpringBootJob implements SimpleJob {
                 shardingContext.getShardingTotalCount(),
                 shardingContext.getShardingItem(),
                 shardingContext.getShardingParameter());
+
+        switch (shardingContext.getShardingItem()) {
+            case 0:
+                // do something by sharding item 0
+                log.info("do item 0");
+                break;
+            case 1:
+                // do something by sharding item 1
+                log.info("do item 1");
+                break;
+            case 2:
+                // do something by sharding item 2
+                log.info("do item 2");
+                break;
+            // case n: ...
+            default:
+                //ignore
+                break;
+
+        }
+
     }
 }
