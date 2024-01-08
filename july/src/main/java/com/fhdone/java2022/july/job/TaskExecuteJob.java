@@ -12,13 +12,13 @@ import java.util.concurrent.*;
 @Slf4j
 public class TaskExecuteJob {
 
-    private static int CORE_POOL_SIZE = 2;
-    private static int MAX_POOL_SIZE = 2;
+    private static final int CORE_POOL_SIZE = 2;
+    private static final int MAX_POOL_SIZE = 2;
     
-    private ThreadFactory namedThreadFactory = new ThreadFactoryBuilder()
+    private final ThreadFactory namedThreadFactory = new ThreadFactoryBuilder()
         .setNameFormat("TASK-EXECUTE-JOB-POOL-%d").build();
 
-    private Executor taskExecutor =  new JulyThreadPoolExecutor(CORE_POOL_SIZE, MAX_POOL_SIZE,
+    private final Executor taskExecutor =  new JulyThreadPoolExecutor(CORE_POOL_SIZE, MAX_POOL_SIZE,
         0L, TimeUnit.MILLISECONDS,
         new LinkedBlockingQueue<>(), namedThreadFactory);
 
