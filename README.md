@@ -3,8 +3,8 @@ brew services start mysql
 
 /Users/fhdone/dev/apache-zookeeper-3.9.1-bin/bin/zkServer.sh start
 
-
 brew services stop mysql
+/Users/fhdone/dev/apache-zookeeper-3.9.1-bin/bin/zkServer.sh stop
 
 # eureka
 export JAVA_HOME=/usr/local/Cellar/openjdk@17/17.0.6/libexec/openjdk.jdk/Contents/Home

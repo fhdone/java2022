@@ -1,5 +1,6 @@
 package com.fhdone.java2022.july.job;
 
+import com.fhdone.java2022.july.utils.JulyThreadPoolExecutor;
 import com.google.common.util.concurrent.ThreadFactoryBuilder;
 import javax.annotation.PostConstruct;
 import lombok.extern.slf4j.Slf4j;
@@ -17,7 +18,7 @@ public class TaskExecuteJob {
     private ThreadFactory namedThreadFactory = new ThreadFactoryBuilder()
         .setNameFormat("TASK-EXECUTE-JOB-POOL-%d").build();
 
-    private Executor taskExecutor =  new ThreadPoolExecutor(CORE_POOL_SIZE, MAX_POOL_SIZE,
+    private Executor taskExecutor =  new JulyThreadPoolExecutor(CORE_POOL_SIZE, MAX_POOL_SIZE,
         0L, TimeUnit.MILLISECONDS,
         new LinkedBlockingQueue<>(), namedThreadFactory);
 
