@@ -1,6 +1,7 @@
 package com.fhdone.java2022.august.utils;
 
 import com.google.common.collect.Lists;
+import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -19,14 +20,15 @@ public class ThreadPoolExecutorTest {
         @Override
         protected void afterExecute(Runnable r, Throwable t) {
             try {
-                Thread.sleep(5000);
+                Thread.sleep(100);
             } catch (InterruptedException e) {
                 throw new RuntimeException(e);
             }
         }
     };
 
-    public static void main(String[] args) {
+    @Test
+    public void test() {
         List<Integer> list = new ArrayList<>();
         for (int i = 0; i < 400; i++) {
             list.add(i);
@@ -38,7 +40,7 @@ public class ThreadPoolExecutorTest {
             for (int j = 0; j < n; j++) {
                 threadPoolExecutor.execute(() -> {
                     try {
-                        Thread.sleep(1000);
+                        Thread.sleep(100);
                     } catch (Exception e) {
                         e.printStackTrace();
                     } finally {
