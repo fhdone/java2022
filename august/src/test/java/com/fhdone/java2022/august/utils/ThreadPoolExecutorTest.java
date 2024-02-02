@@ -19,11 +19,7 @@ public class ThreadPoolExecutorTest {
             64, 0, TimeUnit.MINUTES, new ArrayBlockingQueue<>(32)) {
         @Override
         protected void afterExecute(Runnable r, Throwable t) {
-            try {
-                Thread.sleep(100);
-            } catch (InterruptedException e) {
-                throw new RuntimeException(e);
-            }
+            mySleep(100);
         }
     };
 
@@ -38,14 +34,13 @@ public class ThreadPoolExecutorTest {
             int n = sublist.size();
             CountDownLatch countDownLatch = new CountDownLatch(n);
             for (int j = 0; j < n; j++) {
+//                while (threadPoolExecutor.getQueue().remainingCapacity() == 0) {
+//                    System.out.println("线程池不够用了");
+//                    mySleep(100);
+//                }
                 threadPoolExecutor.execute(() -> {
-                    try {
-                        Thread.sleep(100);
-                    } catch (Exception e) {
-                        e.printStackTrace();
-                    } finally {
-                        countDownLatch.countDown();
-                    }
+                    mySleep(100);
+                    countDownLatch.countDown();
                 });
             }
             try {
@@ -56,6 +51,14 @@ public class ThreadPoolExecutorTest {
             System.out.println("===============>  详情任务 - 任务处理完成");
         }
         System.out.println("都执行完成了");
+    }
+
+    private static void mySleep(int i) {
+        try {
+            Thread.sleep(i);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
     }
 
 }
