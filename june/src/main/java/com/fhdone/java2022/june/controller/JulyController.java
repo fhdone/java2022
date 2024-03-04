@@ -7,10 +7,10 @@ import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
 import com.netflix.hystrix.contrib.javanica.annotation.HystrixProperty;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletRequest;
+import java.util.Map;
 import java.util.Random;
 import java.util.concurrent.TimeUnit;
 
@@ -35,22 +35,34 @@ public class JulyController {
 
     @GetMapping("/queryContact")
     @HystrixCommand(
-        commandProperties = {
-            @HystrixProperty(
-                name="execution.isolation.thread.timeoutInMilliseconds",
-                value="1000")
-        })
+            commandProperties = {
+                    @HystrixProperty(
+                            name="execution.isolation.thread.timeoutInMilliseconds",
+                            value="1000")
+            })
     public ResultInfo queryContact() throws Exception {
         ResultInfo resultInfo = ResultInfo.instanceSuccess(julyClient.queryContact());
         return resultInfo;
     }
 
+
+    @PostMapping("/queryContactPage")
+    public ResultInfo queryContactPage(@RequestBody Map<String, Object> requestMap) 
+                throws Exception {
+        
+        ResultInfo resultInfo = ResultInfo.instanceSuccess(julyClient.queryContactPage(
+                requestMap
+        ));
+        return resultInfo;
+    }
+
+
     @GetMapping("/hstrixDemo")
     @HystrixCommand(
-        commandProperties = {
-            @HystrixProperty(
-                name="execution.isolation.thread.timeoutInMilliseconds",
-                value="200")
+            commandProperties = {
+                    @HystrixProperty(
+                            name="execution.isolation.thread.timeoutInMilliseconds",
+                            value="200")
 //        @HystrixProperty(
 //            name="circuitBreaker.requestVolumeThreshold",
 //            value="2"),
@@ -69,7 +81,7 @@ public class JulyController {
 //        @HystrixProperty(
 //            name="execution.isolation.semaphore.maxConcurrentRequests",
 //            value="2")    
-        })
+            })
     public ResultInfo hstrixDemo() throws Exception {
         ResultInfo resultInfo = ResultInfo.instanceSuccess(julyClient.queryContact());
         return resultInfo;
@@ -79,12 +91,12 @@ public class JulyController {
 
     @GetMapping("/mockHstrixDemo")
     @HystrixCommand(
-        defaultFallback = "hstrixDefault2",
-        commandProperties = {
-            @HystrixProperty(
-                name="execution.isolation.thread.timeoutInMilliseconds",
-                value="200")
-        })
+            defaultFallback = "hstrixDefault2",
+            commandProperties = {
+                    @HystrixProperty(
+                            name="execution.isolation.thread.timeoutInMilliseconds",
+                            value="200")
+            })
     public ResultInfo demoHstrixDemo() throws Exception {
 
         if(RANDOM.nextInt()%5==0){

@@ -16,7 +16,7 @@ import java.lang.management.ManagementFactory;
  * 连接池监控
  */
 //@Component
-@EnableScheduling
+//@EnableScheduling
 @Slf4j
 public class DataSourceMonitor {
 

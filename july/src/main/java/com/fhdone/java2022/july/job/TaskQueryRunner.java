@@ -19,8 +19,8 @@ import java.util.concurrent.BlockingQueue;
  * query job then offer into JOB_QUEUE[BlockingQueue]
  * @author fhdone
  */
-@Component
-@EnableScheduling
+//@Component
+//@EnableScheduling
 @Slf4j
 public class TaskQueryRunner {
 
