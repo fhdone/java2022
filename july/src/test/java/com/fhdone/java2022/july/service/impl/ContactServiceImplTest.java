@@ -4,6 +4,7 @@ import com.alibaba.fastjson.JSON;
 import com.fhdone.java2022.march.dto.demo.Contract;
 import com.fhdone.java2022.july.BaseTest;
 import com.fhdone.java2022.july.service.ContactService;
+import com.github.pagehelper.Page;
 import com.github.pagehelper.PageInfo;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.Assert;
@@ -19,28 +20,41 @@ public class ContactServiceImplTest extends BaseTest {
 
     @Autowired
     private ContactService contactService;
-    
+
     @Test
     public void queryContact() throws Exception {
-        
+
         List<Contract> list = contactService.queryContact();
         log.info("queryContact result:"+JSON.toJSONString(list));
         Assert.assertTrue(list.size()>0);
     }
-    
+
     @Test
     public void queryContactPage() {
-        
+
         for(int i=0; i<10; i++){
             List<Contract> list = contactService.queryContact(i ,2);
             PageInfo<Contract> pageInfo = new PageInfo<Contract>(list,10);
             log.info("queryContact result, page num: {}, page info: {}", i ,
-                JSON.toJSONString(pageInfo));
+                    JSON.toJSONString(pageInfo));
             Assert.assertTrue(list.size()>0);
         }
     }
-    
-    
+
+    @Test
+    public void queryContactPage2() {
+
+        for(int i=0; i<10; i++){
+            Page<Contract> list = contactService.queryContactPage(i ,2);
+            PageInfo<Contract> pageInfo = new PageInfo<Contract>(list,10);
+            log.info("queryContact result, page num: {}, page info: {}", i ,
+                    JSON.toJSONString(pageInfo));
+            Assert.assertTrue(list.size()>0);
+        }
+    }
+
+
+
     @Test
     @Rollback(true)
     public void insertContact(){

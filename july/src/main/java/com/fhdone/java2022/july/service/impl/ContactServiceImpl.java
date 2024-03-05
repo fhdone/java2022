@@ -3,6 +3,7 @@ package com.fhdone.java2022.july.service.impl;
 import com.fhdone.java2022.july.mapper.demo.ContactMapper;
 import com.fhdone.java2022.july.service.ContactService;
 import com.fhdone.java2022.march.dto.demo.Contract;
+import com.github.pagehelper.Page;
 import com.github.pagehelper.PageHelper;
 import javax.annotation.Resource;
 import lombok.AllArgsConstructor;
@@ -18,10 +19,10 @@ import java.util.List;
 @AllArgsConstructor
 public class ContactServiceImpl implements ContactService {
 
-    
+
     @Resource(name="sqlSessionFactoryDbDemo")
     private SqlSessionFactory sqlSessionFactoryDbDemo;
-    
+
     private ContactMapper contactMapper;
 
     @Override
@@ -34,9 +35,15 @@ public class ContactServiceImpl implements ContactService {
         PageHelper.startPage(pageNum, pageSize);
         return contactMapper.queryContact();
     }
-    
+
     @Override
-    @Transactional(rollbackFor = Exception.class) 
+    public Page<Contract> queryContactPage(int pageNum, int pageSize){
+        return PageHelper.startPage(pageNum, pageSize).doSelectPage(()->
+                contactMapper.queryContact());
+    }
+
+    @Override
+    @Transactional(rollbackFor = Exception.class)
     public Long insertContact(Contract contract) {
         return contactMapper.insertContract(contract);
     }
