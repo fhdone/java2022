@@ -6,6 +6,9 @@ import lombok.extern.slf4j.Slf4j;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import java.util.HashMap;
+import java.util.Map;
+
 @Slf4j
 public class JulyControllerTest extends BaseTest {
 
@@ -20,6 +23,15 @@ public class JulyControllerTest extends BaseTest {
     @Test
     public void queryContact() throws Exception {
         log.info(JSON.toJSONString(julyController.queryContact()));
+    }
+
+    @Test
+    public void queryContactPage() throws Exception {
+        
+        Map<String, Object> requestMap = new HashMap<>();
+        requestMap.put("pageNum",1);
+        requestMap.put("pageSize",10);
+        log.info(JSON.toJSONString(julyController.queryContactPage(requestMap)));
     }
 
     @Test
