@@ -45,11 +45,10 @@ public class ContactServiceImplTest extends BaseTest {
     public void queryContactPage2() {
 
         for(int i=0; i<10; i++){
-            Page<Contract> list = contactService.queryContactPage(i ,2);
-            PageInfo<Contract> pageInfo = new PageInfo<Contract>(list,10);
+            PageInfo pageInfo = contactService.queryContactPage(i ,2);
             log.info("queryContact result, page num: {}, page info: {}", i ,
                     JSON.toJSONString(pageInfo));
-            Assert.assertTrue(list.size()>0);
+            Assert.assertTrue(pageInfo.getTotal()>0);
         }
     }
 

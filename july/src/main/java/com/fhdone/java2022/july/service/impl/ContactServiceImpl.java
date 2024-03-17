@@ -3,9 +3,8 @@ package com.fhdone.java2022.july.service.impl;
 import com.fhdone.java2022.july.mapper.demo.ContactMapper;
 import com.fhdone.java2022.july.service.ContactService;
 import com.fhdone.java2022.march.dto.demo.Contract;
-import com.github.pagehelper.Page;
 import com.github.pagehelper.PageHelper;
-import javax.annotation.Resource;
+import com.github.pagehelper.PageInfo;
 import lombok.AllArgsConstructor;
 import org.apache.ibatis.session.ExecutorType;
 import org.apache.ibatis.session.SqlSession;
@@ -13,6 +12,7 @@ import org.apache.ibatis.session.SqlSessionFactory;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import javax.annotation.Resource;
 import java.util.List;
 
 @Service
@@ -37,9 +37,11 @@ public class ContactServiceImpl implements ContactService {
     }
 
     @Override
-    public Page<Contract> queryContactPage(int pageNum, int pageSize){
-        return PageHelper.startPage(pageNum, pageSize).doSelectPage(()->
-                contactMapper.queryContact());
+    public PageInfo queryContactPage(int pageNum, int pageSize){
+        
+        return PageHelper.startPage(pageNum, pageSize).doSelectPageInfo(()
+                -> contactMapper.queryContact());
+        
     }
 
     @Override

@@ -4,6 +4,7 @@ package com.fhdone.java2022.july.controller;
 import com.fhdone.java2022.july.mapper.demo.ContactMapper;
 import com.fhdone.java2022.july.service.ContactService;
 import com.fhdone.java2022.march.dto.demo.Contract;
+import com.github.pagehelper.PageInfo;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.*;
@@ -24,19 +25,32 @@ public class ContractController {
 
     @GetMapping("/queryContact")
     public List<Contract> queryContact() throws Exception {
-        
+
         List<Contract> list = contactMapper.queryContact();
         return list;
     }
 
     @PostMapping("/queryContactPage")
     public List<Contract> queryContactPage(@RequestBody Map<String, Object> requestMap,
-                                                  HttpServletRequest request) throws Exception {
+                                           HttpServletRequest request) throws Exception {
+        
         //log.info(JSON.toJSONString(requestMap));
         int pageNum = (Integer)requestMap.get("pageNum");
         int pageSize = (Integer) requestMap.get("pageSize");
         List<Contract> list = contactService.queryContact( pageNum, pageSize);
         return list;
     }
+
+    @PostMapping("/queryContactPage2")
+    public PageInfo queryContactPage2(@RequestBody Map<String, Object> requestMap,
+                                            HttpServletRequest request) throws Exception {
+        
+        //log.info(JSON.toJSONString(requestMap));
+        int pageNum = (Integer)requestMap.get("pageNum");
+        int pageSize = (Integer) requestMap.get("pageSize");
+        PageInfo pageInfo = contactService.queryContactPage( pageNum, pageSize);
+        return pageInfo;
+    }
+
 
 }
