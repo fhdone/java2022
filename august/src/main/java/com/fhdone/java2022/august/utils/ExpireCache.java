@@ -7,7 +7,7 @@ import java.util.concurrent.*;
 public class ExpireCache<T> {
 
     private ConcurrentMap<String,DelayValue<T> > map = new ConcurrentHashMap<>();
-    private static final ScheduledExecutorService executor = Executors.newScheduledThreadPool(7);
+    private static final ScheduledExecutorService executor = Executors.newScheduledThreadPool(1);
     public static final long DEFAULT_PERIOD_SECOND = 30;
 
     /**
