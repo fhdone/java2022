@@ -1,9 +1,12 @@
 package com.fhdone.java2022.august.utils;
 
+import lombok.extern.slf4j.Slf4j;
+
 import java.util.*;
 import java.util.concurrent.*;
 
 // https://juejin.cn/post/6987433876880621598
+@Slf4j
 public class ExpireCache<T> {
 
     private ConcurrentMap<String,DelayValue<T> > map = new ConcurrentHashMap<>();
@@ -35,6 +38,7 @@ public class ExpireCache<T> {
      * @param value
      */
     public void put(String key, T value){
+        log.info("put key:{}", key);
         map.put(key, new DelayValue<>(value));
     }
 
@@ -45,6 +49,7 @@ public class ExpireCache<T> {
      * @param delay 过期时间 单位毫秒
      */
     public void put(String key, T value, long delay){
+        log.info("put key:{}, delay:{}", key, delay);
         map.put(key, new DelayValue<>(value, delay));
     }
 
@@ -59,6 +64,7 @@ public class ExpireCache<T> {
             return null;
         }
         if(expired(v)){
+            log.info("remove key:{}", key);
             map.remove(key);
             return null;
         }
@@ -83,6 +89,7 @@ public class ExpireCache<T> {
             String key = canExpiredKeys.get(i);
             DelayValue<T> v = map.get(key);
             if (Objects.nonNull(v) && expired(v)) {
+                log.info("remove key:{}", key);
                 map.remove(key);
             }
         }
