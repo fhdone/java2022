@@ -5,6 +5,9 @@ import org.junit.Test;
 
 import java.text.DecimalFormat;
 
+/**
+ * https://hackmd.io/@camiol/rJHLNZy3v
+ */
 @Slf4j
 public class NumberTest {
 
