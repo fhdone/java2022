@@ -1,10 +1,11 @@
 package com.fhdone.java2022.august.utils;
 
+import lombok.extern.slf4j.Slf4j;
 import org.junit.Assert;
 import org.junit.Test;
 
-import static org.junit.Assert.*;
 
+@Slf4j
 public class PasswordUtilsTest {
 
     @Test
@@ -12,7 +13,7 @@ public class PasswordUtilsTest {
         
         for(int i=0; i<10000; i++){
             String pwd = PasswordUtils.generatePassword();
-            System.out.println(pwd);
+            log.info(pwd);
             Assert.assertEquals(  10, pwd.length());
         }
     }
