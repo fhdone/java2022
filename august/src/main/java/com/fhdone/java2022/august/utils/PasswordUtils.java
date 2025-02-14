@@ -7,7 +7,7 @@ public class PasswordUtils {
     private static final String CHAR_STRING =
             "ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnpqrstuvwxyz123456789@";
 
-    public static int PAWSSWORD_LENGTH  = 10;
+    public static final int PAWSSWORD_LENGTH  = 10;
     
     
     /**
