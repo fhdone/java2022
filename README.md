@@ -17,7 +17,7 @@ export PATH=$JAVA_HOME/bin:$PATH
 cd /Users/fhdone/Documents/code/workspace/java2022/jan
 mvn spring-boot:run
 
-# hystric-dashboard 升级到springboot3后不能使用  因为javax变成了jakarta 
+# hystric-dashboard cannot be used after upgrading to springboot3 because javax becomes jakarta
 export JAVA_HOME=/usr/local/Cellar/openjdk@17/17.0.9/libexec/openjdk.jdk/Contents/Home
 export PATH=$JAVA_HOME/bin:$PATH
 cd /Users/fhdone/Documents/code/workspace/java2022/feb
