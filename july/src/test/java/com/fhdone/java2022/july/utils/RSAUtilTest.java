@@ -1,7 +1,13 @@
 package com.fhdone.java2022.july.utils;
 
 import lombok.extern.slf4j.Slf4j;
+import org.apache.commons.codec.binary.Base64;
 import org.junit.Test;
+
+import java.io.ByteArrayOutputStream;
+import java.io.PrintStream;
+
+import static org.junit.jupiter.api.Assertions.*;
 
 @Slf4j
 public class RSAUtilTest {
@@ -22,7 +28,79 @@ public class RSAUtilTest {
 
         String dec = RSAUtil.decrypt(enc, priKey);
         log.info(dec);
-
     }
+
+
+    @Test
+    public void testKeyPairGeneration() throws Exception {
+        // Redirect System.out to capture printed keys
+        ByteArrayOutputStream outContent = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(outContent));
+
+        RSAUtil.genKeyPair();
+
+        String output = outContent.toString();
+        assertTrue(output.contains("公钥："));
+        assertTrue(output.contains("私钥："));
+
+        // Extract keys from output
+        String[] lines = output.split("\n");
+        String pubKey = lines[0].substring(lines[0].indexOf("：") + 1).trim();
+        String privKey = lines[2].substring(lines[2].indexOf("：") + 1).trim();
+
+        // Verify keys are valid Base64
+        assertTrue(Base64.isBase64(pubKey));
+        assertTrue(Base64.isBase64(privKey));
+
+        // Reset System.out
+        System.setOut(System.out);
+    }
+
+    @Test
+    public void testEncryptionWithDifferentInputs() throws Exception {
+        // Test normal string
+        String encrypted1 = RSAUtil.encrypt("Hello World", pubKey);
+        assertNotNull(encrypted1);
+        assertTrue(Base64.isBase64(encrypted1));
+
+        // Test empty string
+        String encrypted2 = RSAUtil.encrypt("", pubKey);
+        assertNotNull(encrypted2);
+
+        // Test special characters
+        String encrypted3 = RSAUtil.encrypt("!@#$%^&*()", pubKey);
+        assertNotNull(encrypted3);
+    }
+
+    @Test
+    public void testEncryptionDecryptionCycle() throws Exception {
+        String originalText = "Test message 123!@#";
+        String encrypted = RSAUtil.encrypt(originalText, pubKey);
+        String decrypted = RSAUtil.decrypt(encrypted, priKey);
+        assertEquals(originalText, decrypted);
+    }
+
+    @Test(expected = Exception.class)
+    public void testEncryptWithInvalidPublicKey() throws Exception {
+        RSAUtil.encrypt("test", "invalid-key");
+    }
+
+    @Test(expected = Exception.class)
+    public void testDecryptWithInvalidPrivateKey() throws Exception {
+        String encrypted = RSAUtil.encrypt("test", pubKey);
+        RSAUtil.decrypt(encrypted, "invalid-key");
+    }
+
+    @Test(expected = NullPointerException.class)
+    public void testEncryptWithNullInput() throws Exception {
+        RSAUtil.encrypt(null, pubKey);
+    }
+
+    @Test(expected = Exception.class)
+    public void testDecryptWithMalformedInput() throws Exception {
+        RSAUtil.decrypt("not-valid-base64", priKey);
+    }
+
+
 
 }
